@@ -1,0 +1,19 @@
+{
+    "require": {
+        "slim/slim": "^3.0",
+        "monolog/monolog": "^1.23",
+        "slim/php-view": "^2.2",
+        "robmorgan/phinx": "^0.8.1",
+        "illuminate/database": "^5.4",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app",
+            "App\\Controllers\\": "app/controllers",
+            "App\\Models\\": "app/models",
+            "App\\Console\\": "app/console",
+            "App\\Services\\": "app/services"
+        }
+    }
+}
