@@ -11,7 +11,6 @@ class CategoriesSaveService extends Service
  * */
     public function saveAllCategories()
     {
-
         $client = new Client();
         $res = $client->request('GET', 'http://fileprofit.local/api/get-categories');
 

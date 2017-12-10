@@ -11,6 +11,11 @@ class CategoryController extends Controller
     {
         $category = $args['category'];
         $page = Category::where('alias', $category)->first();
+
+        if (!$page) {
+            throw new \Exception('Категории не существует', 400);
+        }
+
         $pageNumber = isset($args['pageNumber']) ? (int)$args['pageNumber'] : 1;
 
         $pageData['title_seo'] = $page->title_seo ? $page->title_seo : $page->title;

@@ -1,17 +1,12 @@
-Функционал Fileprofit Client
-===============================
-1) Выгрузка всех игр с основной базой игр:
+#FileProfit Client
 
-        php index.php GamesDataController/getGames
-    
-2) Обновление всех игр
+Сервис для заработка на файловом трафике
 
-        php index.php GamesDataController/updateGames
+## Установка и конфигурация
 
-3) Обновления конкретного поля
+* /docs/INSTALL.md — инструкция по установке
 
-        php index.php GamesDataController/updateGames field
-        
-4) Удаление всех игр
+## Синхронизация с FileProfit Server
 
-        php index.php GamesDataController/deleteGames
+* /docs/SYNCHRONIZATION.md — инструкция синхронизации
+
