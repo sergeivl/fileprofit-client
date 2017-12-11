@@ -19,11 +19,16 @@ phpunit.phar
 # vagrant runtime
 /logs
 /tmp
+
 /public/img/covers
+!/public/img/covers/.gitkeep
+
 /public/img/screenshots
+!/public/img/screenshots/.gitkeep
+
 /public/torrents
+!/public/torrents/.gitkeep
 
 /phinx.yml
 /config/db.php
 
-!.gitkeep
