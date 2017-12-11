@@ -6,13 +6,14 @@ use GuzzleHttp\Client;
 
 class CategoriesSaveService extends Service
 {
+    const SERVER_URL = 'http://fp-server.local/';
     /*
  * Выгрузка и сохранение категорий с API
  * */
     public function saveAllCategories()
     {
         $client = new Client();
-        $res = $client->request('GET', 'http://fileprofit.local/api/get-categories');
+        $res = $client->request('GET', self::SERVER_URL . '/api/get-categories');
 
         $categories = [];
 
@@ -37,7 +38,7 @@ class CategoriesSaveService extends Service
     public function updateAllCategories()
     {
         $client = new Client();
-        $res = $client->request('GET', 'http://fileprofit.local/api/get-categories');
+        $res = $client->request('GET', self::SERVER_URL . '/api/get-categories');
 
         $categories = [];
 

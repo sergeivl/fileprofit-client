@@ -11,6 +11,7 @@ class GamesSaveService extends Service
     /*
     * Выгрузка и сохранение категорий с API
     **/
+    const SERVER_URL = 'http://fp-server.local';
     public function saveAllGames()
     {
         $offset = 0;
@@ -116,7 +117,7 @@ class GamesSaveService extends Service
         try {
             $res = $client->request(
                 'GET',
-                "http://fileprofit.local/api/get-games?limit=$limit&offset=$offset"
+                self::SERVER_URL . "/api/get-games?limit=$limit&offset=$offset"
         );
             $games = [];
             if ($res->getStatusCode() === 200) {
