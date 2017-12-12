@@ -6,17 +6,23 @@ use App\Models\Page;
 use App\Models\Taxonomy;
 use App\Services\PaginatorService;
 use Illuminate\Database\DatabaseManager;
+use Slim\Container;
 use Slim\Http\Request;
 use Slim\Views\PhpRenderer;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 class AdminController extends Controller
 {
+    public function __construct(Container $container)
+    {
+        parent::__construct($container);
+        $container['view'] = function (Container $c) {
+            return new PhpRenderer($c['settings']['templatesPath'] . '/admin');
+        };
+    }
+
     public function gameEdit(Request $request, $response, $args)
     {
-
-
-
 
         /** @var array $args */
         $game = Game::where('id', $args['id'])->first();

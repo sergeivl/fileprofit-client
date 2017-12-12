@@ -3,7 +3,6 @@ $container = $app->getContainer();
 
 // Шаблонизатор
 $container['view'] = function (\Slim\Container $c) {
-
     return new \Slim\Views\PhpRenderer($c['settings']['templatesPath'] . '/' . $c['settings']['theme']);
 };
 
