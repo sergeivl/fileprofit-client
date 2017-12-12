@@ -44,40 +44,67 @@ class AdminController extends Controller
 
     public function gameList($request, $response, $args)
     {
-        $category = $args['category'];
-        $page = Category::where('alias', $category)->first();
+        $category = isset($args['category']) ? $args['category'] : null;
+
+        if ($category !== null) {
+            $page = Category::where('alias', $category)->first();
+            $pageData['title_seo'] = $page->title_seo ? $page->title_seo : $page->title;
+            $pageData['title'] = $page->title;
+            $pageData['alias'] = $page->alias;
+        } else {
+            $pageData['title_seo'] = 'Админка';
+            $pageData['title'] =  'Админка';
+            $pageData['alias'] = 'admin';
+        }
+
         $pageNumber = isset($args['pageNumber']) ? (int)$args['pageNumber'] : 1;
 
-        $pageData['title_seo'] = $page->title_seo ? $page->title_seo : $page->title;
-        $pageData['title'] = $page->title;
-        $pageData['alias'] = $page->alias;
+
 
         $limit = 50;
         if ($pageNumber > 1) {
             $offset = ($pageNumber - 1) * $limit;
 
-            $games = Game::whereHas('taxonomy', function ($query) use ($page) {
-                $query->where('category_id', '=', $page->id);
-            })
-                ->orderBy('date_release', 'desc')
-                ->skip($offset)
-                ->take($limit)
-                ->get();
+            if ($category !== null) {
+                $games = Game::whereHas('taxonomy', function ($query) use ($page) {
+                    $query->where('category_id', '=', $page->id);
+                })
+                    ->orderBy('date_release', 'desc')
+                    ->skip($offset)
+                    ->take($limit)
+                    ->get();
+            } else {
+                $games = Game::orderBy('date_release', 'desc')
+                    ->skip($offset)
+                    ->take($limit)
+                    ->get();
+            }
+
 
         } else {
-            $games = Game::whereHas('taxonomy', function ($query) use ($page) {
-                $query->where('category_id', '=', $page->id);
-            })
-                ->orderBy('date_release', 'desc')
-                ->take($limit)
-                ->get();
+            if ($category !== null) {
+                $games = Game::whereHas('taxonomy', function ($query) use ($page) {
+                    $query->where('category_id', '=', $page->id);
+                })
+                    ->orderBy('date_release', 'desc')
+                    ->take($limit)
+                    ->get();
+            } else {
+                $games = Game::orderBy('date_release', 'desc')
+                    ->take($limit)
+                    ->get();
+            }
 
         }
 
+        if ($category !== null) {
+            $totalGames = Game::whereHas('taxonomy', function ($query) use ($page) {
+                $query->where('category_id', '=', $page->id);
+            })->count();
+        } else {
+            $totalGames = Game::all()->count();
+        }
 
-        $totalGames = Game::whereHas('taxonomy', function ($query) use ($page) {
-            $query->where('category_id', '=', $page->id);
-        })->count();
 
         /** @var PhpRenderer $view */
         $view = $this->container->view;
