@@ -6,23 +6,23 @@ use GuzzleHttp\Client;
 
 class CategoriesSaveService extends Service
 {
-    const SERVER_URL = 'http://fp-server.local/';
-    /*
- * Выгрузка и сохранение категорий с API
- * */
+
+    /**
+    * Выгрузка и сохранение категорий с API
+     * */
     public function saveAllCategories()
     {
         $client = new Client();
-        $res = $client->request('GET', self::SERVER_URL . '/api/get-categories');
+        $res = $client->request('GET', $this->container->settings['api'] . '/api/get-categories');
 
         $categories = [];
 
         if ($res->getStatusCode() === 200) {
             $categories = \GuzzleHttp\json_decode($res->getBody(), true);
         }
-        foreach ($categories as $category){
+        foreach ($categories as $category) {
             $model = Category::where('id', $category['id'])->first();
-            if (empty($model)){
+            if (empty($model)) {
                 $model = new Category;
                 $model->id = $category['id'];
                 $model->title = $category['name'];
@@ -38,16 +38,16 @@ class CategoriesSaveService extends Service
     public function updateAllCategories()
     {
         $client = new Client();
-        $res = $client->request('GET', self::SERVER_URL . '/api/get-categories');
+        $res = $client->request('GET', $this->container->settings['api'] . '/api/get-categories');
 
         $categories = [];
 
         if ($res->getStatusCode() === 200) {
             $categories = \GuzzleHttp\json_decode($res->getBody(), true);
         }
-        foreach ($categories as $category){
+        foreach ($categories as $category) {
             $model = Category::where('id', $category['id'])->first();
-            if (empty($model)){
+            if (empty($model)) {
                 $model = new Category;
             }
 

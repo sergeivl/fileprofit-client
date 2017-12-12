@@ -1,0 +1,86 @@
+body {
+    padding-top: 50px;
+    background: url('/themes/tut-games/img/back.jpg');
+}
+footer {
+    height:80px;
+    padding: 0 !important;
+}
+h1 {
+    font-size: 18px;
+    font-weight: bold;
+}
+h2 {
+    font-size: 16px;
+    font-weight: bold;
+}
+.first-aside{
+    width:250px;
+    float:left;
+}
+.second-aside{
+    width:250px;
+    float:right;
+}
+aside img{
+    max-width: 250px;
+}
+main {
+    float: left;
+    width: 580px;
+    margin-left: 30px;
+}
+.fp-footer{
+    padding: 20px 15px;
+    background: #101010 !important;
+    color:#fff;
+    margin:0;
+    height:80px;
+
+}
+.fp-template {
+    padding: 20px 15px;
+    background: #fff;
+}
+.download-button{
+    width: 100%;
+    margin-top:20px;
+}
+.screenshots img {
+    display: block;
+    margin-bottom: 10px;
+}
+.second-aside li {
+    list-style-type: none;
+    border-bottom: 1px solid #ccc;
+    padding:10px 0;
+}
+.second-aside ul {
+    padding-left: 0;
+}
+/*
+.fp-template .pull-left img {
+    width:240px;
+    height: 320px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+}
+*/
+
+.game-item-block{
+    width:32.5%;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.content-list {
+    margin: 0 0 40px 0;
+}
+.game-name {
+    position: absolute;
+    top:130px;
+    color:#fff;
+    text-align: center;
+    background: #000;
+    width:240px;
+}

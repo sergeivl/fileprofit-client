@@ -11,7 +11,8 @@ class GamesSaveService extends Service
     /*
     * Выгрузка и сохранение категорий с API
     **/
-    const SERVER_URL = 'http://fp-server.local';
+    const GAME_TYPE = 'TutGames';
+
     public function saveAllGames()
     {
         $offset = 0;
@@ -74,7 +75,7 @@ class GamesSaveService extends Service
                 $this->container['logger']->addInfo($count . ') ' . $game['alias']);
                 $count++;
             }
-            $offset = $games[count($games)-1]['id'];
+            $offset = $games[count($games) - 1]['id'];
             sleep(3);
         }
 
@@ -105,7 +106,7 @@ class GamesSaveService extends Service
                 $count++;
 
             }
-            $offset = $games[count($games)-1]['id'];
+            $offset = $games[count($games) - 1]['id'];
         }
     }
 
@@ -113,24 +114,28 @@ class GamesSaveService extends Service
     {
         $client = new Client();
         // CURLOPT_HTTPHEADER => ['Expect:']
-
+        $games = [];
+        echo PHP_EOL . $this->container->settings['api'] . "/api/get-games?limit=$limit&offset=$offset&contentType=" . $this->container->settings['games_content_type'] . PHP_EOL;
         try {
             $res = $client->request(
                 'GET',
-                self::SERVER_URL . "/api/get-games?limit=$limit&offset=$offset"
-        );
-            $games = [];
+                $this->container->settings['api']
+                . "/api/get-games?limit=$limit&offset=$offset"
+                . ($this->container->settings['games_content_type'] ? '&contentType='
+                . $this->container->settings['games_content_type'] : '')
+            );
+
             if ($res->getStatusCode() === 200) {
-                $games = \GuzzleHttp\json_decode($res->getBody(), true);
+                //$games = \GuzzleHttp\json_decode($res->getBody(), true);
+                $games = json_decode($res->getBody(), true);
             }
 
         } catch (RequestException $e) {
             $this->container['logger']->addError('cURL error 18');
-            exit;
         }
 
 
-        if(!is_array($games) || count($games) === 0) {
+        if (!is_array($games) || count($games) === 0) {
             return false;
         }
         return $games;
@@ -141,7 +146,7 @@ class GamesSaveService extends Service
         $parts = explode('.', $game['cover']);
         $ext = $parts[count($parts) - 1];
         $coverPath = 'img/covers/' . $model->alias . '.' . $ext;
-        if (!file_exists($coverPath)){
+        if (!file_exists($coverPath)) {
             $this->saveFile(
                 $game['cover'],
                 $coverPath
@@ -154,7 +159,7 @@ class GamesSaveService extends Service
     private function saveScreenshots(Game $model, $game)
     {
         $result = [];
-        if(!isset($game['screenshots']) || empty($game['screenshots'])){
+        if (!isset($game['screenshots']) || empty($game['screenshots'])) {
             return '';
         }
         $screenshots = explode(';', $game['screenshots']);
@@ -163,16 +168,16 @@ class GamesSaveService extends Service
             $parts = explode('.', $screenshot);
             $ext = $parts[count($parts) - 1];
 
-            $path = 'img/screenshots/' . $model->alias . '_' . strval($key + 1). '.' . $ext;
+            $path = 'img/screenshots/' . $model->alias . '_' . strval($key + 1) . '.' . $ext;
 
-            if (!file_exists($path)){
+            if (!file_exists($path)) {
                 $this->saveFile(
                     $screenshot,
                     $path
                 );
             }
 
-            $result[] = '/' . $path ;
+            $result[] = '/' . $path;
         }
         return \GuzzleHttp\json_encode($result);
     }
@@ -180,20 +185,20 @@ class GamesSaveService extends Service
     private function saveTorrent($model, $game)
     {
 
-            $parts = explode('.', $game['torrent']);
-            $ext = $parts[count($parts) - 1];
-            $torrentPath = 'torrents/' . $model->alias . '.' . $ext;
+        $parts = explode('.', $game['torrent']);
+        $ext = $parts[count($parts) - 1];
+        $torrentPath = 'torrents/' . $model->alias . '.' . $ext;
 
-            if (empty($game['torrent'])) {
-                $this->container['logger']->addError('Торрент файл отсутствует');
-                return false;
-            }
+        if (empty($game['torrent'])) {
+            $this->container['logger']->addError('Торрент файл отсутствует');
+            return false;
+        }
 
-            $this->saveFile(
-                $game['torrent'],
-                $torrentPath
-            );
-            return '/' . $torrentPath;
+        $this->saveFile(
+            $game['torrent'],
+            $torrentPath
+        );
+        return '/' . $torrentPath;
 
 
     }
@@ -207,12 +212,11 @@ class GamesSaveService extends Service
             $client->request('GET', $url, [
                 'sink' => $path,
             ]);
-        }
-        catch (RequestException $e) {
-            $this->container['logger']->addError('cURL error 18');
+        } catch (RequestException $e) {
+            $this->container['logger']->addError('Не удалось сохранить файл "' . $url . '". cURL error 18');
             exit;
         } catch (Exception $exception) {
-            $this->container['logger']->addError('Не удалось сохранить '. $url);
+            $this->container['logger']->addError('Не удалось сохранить ' . $url);
 
         }
         return '';
@@ -248,7 +252,7 @@ class GamesSaveService extends Service
                 [$model->id, $tax['category_id']]
             )->first();
 
-            if (!empty($taxonomy )){
+            if (!empty($taxonomy)) {
                 continue;
             }
 
