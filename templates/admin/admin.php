@@ -16,8 +16,7 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="/themes/tut-games/css/style.css" rel="stylesheet" type="text/css">
     <link href="/themes/admin/css/admin.css" rel="stylesheet" type="text/css">
-    <link rel="icon" href="/img/unikgames.png" />
-
+    <link rel="icon" href="/img/unikgames.png"/>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -27,13 +26,14 @@
     <script type="text/javascript" src="/ckeditor/adapters/jquery.js"></script>
 
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
     <title><?= $pageData['title_seo'] ?></title>
 </head>
 
 <body>
-
 
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -46,40 +46,39 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><span style="color:#5cb85c;">Одмин</span>ко</a>
+            <a class="navbar-brand" href="/admin/"><span style="color:#5cb85c;">File</span>Profit Admin</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li <?= @$pageData['alias'] == 'main' ?  'class="active"' : ''  ?> ><a href="/admin/">Все игры</a></li>
-                <li <?= @$pageData['alias'] == 'action' ?  'class="active"' : ''  ?> ><a href="/admin/action">Action</a></li>
-                <li <?= @$pageData['alias'] == 'strategy' ?  'class="active"' : ''  ?> ><a href="/admin/strategy">Стратегии</a></li>
-                <li <?= @$pageData['alias'] == 'rpg' ?  'class="active"' : ''  ?> ><a href="/admin/rpg">RPG</a></li>
-                <li <?= @$pageData['alias'] == 'arcade' ?  'class="active"' : ''  ?> ><a href="/admin/arcade">Аркады</a></li>
-                <li <?= @$pageData['alias'] == 'quest' ?  'class="active"' : ''  ?> ><a href="/admin/quest">Приключения</a></li>
-                <li <?= @$pageData['alias'] == 'race' ?  'class="active"' : ''  ?> ><a href="/admin/race">Гонки</a></li>
-                <li <?= @$pageData['alias'] == 'fighting' ?  'class="active"' : ''  ?> ><a href="/admin/fighting">Файтинги</a></li>
-                <li <?= @$pageData['alias'] == 'sport' ?  'class="active"' : ''  ?> ><a href="/admin/sport">Спорт</a></li>
-                <li <?= @$pageData['alias'] == 'simulator' ?  'class="active"' : ''  ?> ><a href="/admin/simulator">Симуляторы</a></li>
+                <li><a href="/admin/">Игры</a></li>
+                <li><a href="/admin/categories">Категории</a></li>
+                <li><a href="/admin/pages">Страницы</a></li>
+                <li><a href="/admin/menu">Меню</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
 
-<div class="container">
-    <div class="row fp-template">
-        <button class="btn btn-primary">Добавить игру</button>
-        <button class="btn btn-success">Добавить категорию</button>
-        <button class="btn btn-info">Управление категориями</button>
+<div class="container" style="background: white">
+    <div class="row">
+        <div class="col-md-10">
+            <?php require '_' . $subtemplate . '.php' ?>
+        </div>
+        <div class="col-md-2">
+            <br><br><br><br>
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#">Добавить игру</a></li>
+                <li><a href="#">Добавить категорию</a></li>
+                <li><a href="#">Добавить страницу</a></li>
+            </ul>
+        </div>
     </div>
 </div>
-
-<?php
-require '_' . $subtemplate . '.php' ?>
-
 <footer class="container">
     <div class="row fp-footer">
         <div class="col-xs-6">
-            <a href="http://unikgames.ru/">UnikGames.Ru</a> - скачать игры на русском бесплатно через торрент
+            <a href="">FileProfit Admin
+            </a>
         </div>
         <div class="col-xs-6" style="text-align:right;">
 

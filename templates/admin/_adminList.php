@@ -2,7 +2,24 @@
 /** @var array $pageData */
 /** @var array $games */
 ?>
-<div class="container fp-template">
+<div class="fp-template">
+    <div class="row">
+        <div class="">
+            <ul class="nav nav-pills">
+                <li <?= @$pageData['alias'] === 'admin' ?  'class="active"' : ''  ?> ><a href="/admin/">Все игры</a></li>
+                <li <?= @$pageData['alias'] === 'action' ?  'class="active"' : ''  ?> ><a href="/admin/action">Action</a></li>
+                <li <?= @$pageData['alias'] === 'strategy' ?  'class="active"' : ''  ?> ><a href="/admin/strategy">Стратегии</a></li>
+                <li <?= @$pageData['alias'] === 'rpg' ?  'class="active"' : ''  ?> ><a href="/admin/rpg">RPG</a></li>
+                <li <?= @$pageData['alias'] === 'arcade' ?  'class="active"' : ''  ?> ><a href="/admin/arcade">Аркады</a></li>
+                <li <?= @$pageData['alias'] === 'quest' ?  'class="active"' : ''  ?> ><a href="/admin/quest">Приключения</a></li>
+                <li <?= @$pageData['alias'] === 'race' ?  'class="active"' : ''  ?> ><a href="/admin/race">Гонки</a></li>
+                <li <?= @$pageData['alias'] === 'fighting' ?  'class="active"' : ''  ?> ><a href="/admin/fighting">Файтинги</a></li>
+                <li <?= @$pageData['alias'] === 'sport' ?  'class="active"' : ''  ?> ><a href="/admin/sport">Спорт</a></li>
+                <li <?= @$pageData['alias'] === 'simulator' ?  'class="active"' : ''  ?> ><a href="/admin/simulator">Симуляторы</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="content-list">
         <h1><?= $pageData['title'] ?></h1>
     </div>

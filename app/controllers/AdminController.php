@@ -190,4 +190,36 @@ class AdminController extends Controller
         return $response->withJson($result, 200);
     }
 
+    public function pagesList($request, $response, $args)
+    {
+        $pages = Page::all();
+
+        /** @var PhpRenderer $view */
+        $view = $this->container->view;
+
+        return $view->render($response, 'admin.php', [
+            'subtemplate' => 'pagesList',
+            'pages' => $pages
+        ]);
+    }
+
+    public function pagesEdit($request, $response, $args)
+    {
+
+    }
+
+    public function pagesCreate()
+    {
+
+    }
+
+    public function categoryList()
+    {
+
+    }
+    public function categoryEdit()
+    {
+
+    }
+
 }
