@@ -61,3 +61,4 @@ $app->get('/admin/game/delete/{id:[0-9]+}',  'AdminController:gameDelete');
 $app->get('/admin/game/change-status/{id:[0-9]+}',  'AdminController:gameChangeStatus');
 
 $app->get('/admin/pages',  'AdminController:pagesList');
+$app->get('/admin/page/{id:[0-9]+}',  'AdminController:pagesEdit');

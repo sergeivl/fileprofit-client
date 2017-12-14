@@ -205,7 +205,10 @@ class AdminController extends Controller
 
     public function pagesEdit($request, $response, $args)
     {
-
+        $pageId = $args['id'];
+        $page = Page::one();
+        print_r($args);
+        echo 'Редактируем страницу';
     }
 
     public function pagesCreate()
