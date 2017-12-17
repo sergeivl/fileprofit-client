@@ -1,5 +1,7 @@
 <?php
 
+use App\Middleware\AuthMiddleware;
+
 if (php_sapi_name() === 'cli') {
     switch ($argv[1]) {
         case 'GamesDataController/getCategories':
@@ -49,16 +51,29 @@ $app->get('/{category:' . implode('|', $categoryAliases) . '}/{pageNumber:[0-9]+
 $app->get('/{category:' . implode('|', $categoryAliases) .'}/{gameAlias}',  'GameController:show');
 
 
-// Админка
-$app->get('/admin[/]',  'AdminController:gameList');
-$app->get('/admin/{pageNumber:[0-9]+}',  'AdminController:gameList');
-$app->get('/admin/{category:' . implode('|', $categoryAliases) . '}',  'AdminController:gameList');
-$app->get('/admin/{category:' . implode('|', $categoryAliases) . '}/{pageNumber:[0-9]+}',
-    'AdminController:gameList');
-$app->get('/admin/game/{id:[0-9]+}',  'AdminController:gameEdit');
-$app->post('/admin/game/{id:[0-9]+}',  'AdminController:gameEdit');
-$app->get('/admin/game/delete/{id:[0-9]+}',  'AdminController:gameDelete');
-$app->get('/admin/game/change-status/{id:[0-9]+}',  'AdminController:gameChangeStatus');
+$app->group('', function () use ($categoryAliases) {
+    // Админка
+    $this->get('/admin[/]',  'AdminController:gameList');
+    $this->get('/admin/{pageNumber:[0-9]+}',  'AdminController:gameList');
+    $this->get('/admin/{category:' . implode('|', $categoryAliases) . '}',  'AdminController:gameList');
+    $this->get(
+        '/admin/{category:' . implode('|', $categoryAliases) . '}/{pageNumber:[0-9]+}',
+        'AdminController:gameList'
+    );
 
-$app->get('/admin/pages',  'AdminController:pagesList');
-$app->get('/admin/page/{id:[0-9]+}',  'AdminController:pagesEdit');
+    $this->get('/admin/game/{id:[0-9]+}',  'AdminController:gameEdit');
+    $this->post('/admin/game/{id:[0-9]+}',  'AdminController:gameEdit');
+    $this->get('/admin/game/delete/{id:[0-9]+}',  'AdminController:gameDelete');
+    $this->get('/admin/game/change-status/{id:[0-9]+}',  'AdminController:gameChangeStatus');
+
+    $this->get('/admin/pages',  'AdminController:pagesList');
+    $this->get('/admin/pages/edit/{id:[0-9]+}',  'AdminController:pagesEdit');
+    $this->post('/admin/pages/edit/{id:[0-9]+}',  'AdminController:pagesEdit');
+
+    $this->get('/admin/categories',  'AdminController:categoriesList');
+    $this->get('/admin/categories/edit/{id:[0-9]+}',  'AdminController:categoriesEdit');
+    $this->post('/admin/categories/edit/{id:[0-9]+}',  'AdminController:categoriesEdit');
+})->add(new AuthMiddleware($container));
+
+$app->get('/admin/login',  'AdminController:login');
+$app->post('/admin/login',  'AdminController:login');

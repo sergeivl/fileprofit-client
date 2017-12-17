@@ -8,6 +8,7 @@ use App\Services\PaginatorService;
 use Illuminate\Database\DatabaseManager;
 use Slim\Container;
 use Slim\Http\Request;
+use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -205,24 +206,125 @@ class AdminController extends Controller
 
     public function pagesEdit($request, $response, $args)
     {
+        /** @var PhpRenderer $view */
+        $view = $this->container->view;
+
         $pageId = $args['id'];
-        $page = Page::one();
-        print_r($args);
-        echo 'Редактируем страницу';
+        $pageModel = Page::whereId($pageId)->first();
+
+        if($request->isPost()) {
+            echo 'Сохраняем старницу';
+            $data = $request->getParsedBody();;
+            $this->savePage($data, $pageModel);
+        }
+
+        return $view->render($response, 'admin.php', [
+            'subtemplate' => 'pageEdit',
+            'pageData' => $pageModel
+        ]);
     }
+
+
 
     public function pagesCreate()
     {
 
     }
 
-    public function categoryList()
+    public function categoriesList($request, $response, $args)
     {
+        $categories = Category::all();
 
+        /** @var PhpRenderer $view */
+        $view = $this->container->view;
+
+        $pageData = [
+            'title_seo' => 'Список категорий',
+            'meta_d' => 'Редактирование списка категорийй'
+        ];
+
+        return $view->render($response, 'admin.php', [
+            'subtemplate' => 'categoriesList',
+            'categories' => $categories,
+            'pageData' => $pageData
+        ]);
     }
-    public function categoryEdit()
+
+    public function categoriesEdit($request, $response, $args)
+    {
+        /** @var PhpRenderer $view */
+        $view = $this->container->view;
+
+        $categoryId = $args['id'];
+        $categoryModel = Category::whereId($categoryId)->first();
+
+        if($request->isPost()) {
+            echo 'Сохраняем старницу';
+            $data = $request->getParsedBody();
+            $this->saveCategory($data, $categoryModel);
+        }
+
+        return $view->render($response, 'admin.php', [
+            'subtemplate' => 'categoryEdit',
+            'pageData' => $categoryModel
+        ]);
+    }
+
+
+    private function savePage($data, $pageModel = null)
+    {
+        if (!$pageModel) {
+            $pageModel = new Page();
+        }
+
+        $pageModel->loadData($data);
+        $pageModel->save();
+    }
+
+    private function saveCategory($data, $categoryModel)
+    {
+        if (!$categoryModel) {
+            $categoryModel = new Category();
+        }
+
+        $categoryModel->loadData($data);
+        $categoryModel->save();
+    }
+
+    public function login(Request $request, Response $response, $args)
     {
 
+
+        /** @var PhpRenderer $view */
+        $view = $this->container->view;
+
+        if ($request->isPost()) {
+
+            $formData = $request->getParsedBody();
+
+
+            $this->container->auth->attempt(
+                $formData['login'],
+                $formData['password']
+            );
+
+        }
+
+        if($this->container->auth->check()) {
+            return $response->withRedirect('/admin/');
+        }
+
+        $pageData = [
+            'title' => 'Авторизация',
+            'title_seo' => 'Авторизация',
+            'meta_d' => 'Евгений Ваганович, залогиньтесь'
+        ];
+
+
+        return $view->render($response, 'admin.php', [
+            'subtemplate' => 'login',
+            'pageData' => $pageData
+        ]);
     }
 
 }

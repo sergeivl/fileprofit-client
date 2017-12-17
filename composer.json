@@ -13,7 +13,9 @@
             "App\\Controllers\\": "app/controllers",
             "App\\Models\\": "app/models",
             "App\\Console\\": "app/console",
-            "App\\Services\\": "app/services"
+            "App\\Services\\": "app/services",
+            "App\\Middleware\\": "app/middleware",
+            "App\\Auth\\": "app/auth"
         }
     }
 }

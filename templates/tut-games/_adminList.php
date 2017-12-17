@@ -33,7 +33,7 @@
                     <a href="#change-status" class="status-lurk <?= $game->status === 'published' ? '' : 'hide' ?>">
                         <i class="glyphicon glyphicon-eye-close" data-toggle="tooltip" data-placement="top" title="Снять с публикации"></i>
                     </a>
-                    <a href="#change-status" class="status-public <?= $game->status === 'published' ? 'hide"' : '' ?>">
+                    <a href="#change-status" class="status-public <?= $game->status === 'published' ? 'hide' : '' ?>">
                         <i class="glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="top" title="Опубликовать"></i>
                     </a>
                 </td>

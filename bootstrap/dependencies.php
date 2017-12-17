@@ -6,7 +6,7 @@ $container['view'] = function (\Slim\Container $c) {
     return new \Slim\Views\PhpRenderer($c['settings']['templatesPath'] . '/' . $c['settings']['theme']);
 };
 
-//var_dump($config['settings']['db']);
+// var_dump($config['settings']['db']);
 
 // ORM
 $capsule = new \Illuminate\Database\Capsule\Manager();
@@ -40,6 +40,10 @@ $container['AdminController'] = function (\Slim\Container $c) {
     return new \App\Controllers\AdminController($c);
 };
 
+$container['auth'] = function (\Slim\Container $c) {
+    return new \App\Auth\Auth;
+};
+
 // Консольные контроллеры
 if (php_sapi_name() === 'cli') {
     $container['GamesDataController'] = function (\Slim\Container $c) {
@@ -56,6 +60,5 @@ if (php_sapi_name() === 'cli') {
         $logger->pushHandler($handler);
         return $logger;
     };
-
 
 }

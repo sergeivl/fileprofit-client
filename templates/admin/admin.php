@@ -10,7 +10,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <meta name="description" content="<?= @$pageData['meta_d'] ?>">
+    <meta name="description" content="<?= isset($pageData['meta_d']) ? $pageData['meta_d'] : '' ?>">
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -30,7 +30,7 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
 
-    <title><?= $pageData['title_seo'] ?></title>
+    <title><?= isset($pageData['title_seo']) ? $pageData['title_seo'] : (isset($pageData['title']) ? $pageData['title'] : '' ) ?></title>
 </head>
 
 <body>
@@ -63,14 +63,6 @@
     <div class="row">
         <div class="col-md-10">
             <?php require '_' . $subtemplate . '.php' ?>
-        </div>
-        <div class="col-md-2">
-            <br><br><br><br>
-            <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Добавить игру</a></li>
-                <li><a href="#">Добавить категорию</a></li>
-                <li><a href="#">Добавить страницу</a></li>
-            </ul>
         </div>
     </div>
 </div>
