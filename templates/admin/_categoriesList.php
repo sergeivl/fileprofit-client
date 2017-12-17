@@ -25,10 +25,10 @@
                     <i class="glyphicon glyphicon-trash"></i>
                 </a>
 
-                <a href="#change-status" class="status-lurk <?= $category->status === 'published' ? '' : 'hide' ?>">
+                <a href="#change-status" class="status-lurk <?= $category->status ? '' : 'hide' ?>">
                     <i class="glyphicon glyphicon-eye-close" data-toggle="tooltip" data-placement="top" title="Снять с публикации"></i>
                 </a>
-                <a href="#change-status" class="status-public <?= $category->status === 'published' ? 'hide"' : '' ?>">
+                <a href="#change-status" class="status-public <?= $category->status ? 'hide"' : '' ?>">
                     <i class="glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="top" title="Опубликовать"></i>
                 </a>
             </td>

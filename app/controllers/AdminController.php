@@ -166,7 +166,7 @@ class AdminController extends Controller
 
         $game = Game::where('id', $args['id'])->first();
 
-        $game->status = $game->status === 'published' ? 'not_published' : 'published';
+        $game->status = !$game->status;
 
         try {
             Capsule::beginTransaction();

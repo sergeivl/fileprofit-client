@@ -5,7 +5,7 @@ CREATE TABLE `fp_categories` (
   `meta_d` varchar(255) DEFAULT NULL,
   `text` text,
   `alias` varchar(255) NOT NULL,
-  `status` enum('published','not_published') NOT NULL DEFAULT 'published',
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -33,7 +33,7 @@ CREATE TABLE `fp_games` (
   `torrent` varchar(255) NOT NULL,
   `cover` varchar(255) NOT NULL,
   `screenshots` text,
-  `status` enum('published','not_published') NOT NULL DEFAULT 'published',
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `operatingSystem` varchar(255) DEFAULT NULL,
   `processorRequirements` varchar(255) DEFAULT NULL,
   `memoryRequirements` varchar(255) DEFAULT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `fp_pages` (
   `meta_d` varchar(255) NOT NULL,
   `text` text NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `status` enum('not_published','published') NOT NULL DEFAULT 'not_published',
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)

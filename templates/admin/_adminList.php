@@ -47,10 +47,10 @@
                         <i class="glyphicon glyphicon-trash"></i>
                     </a>
 
-                    <a href="#change-status" class="status-lurk <?= $game->status === 'published' ? '' : 'hide' ?>">
+                    <a href="#change-status" class="status-lurk <?= $game->status  ? '' : 'hide' ?>">
                         <i class="glyphicon glyphicon-eye-close" data-toggle="tooltip" data-placement="top" title="Снять с публикации"></i>
                     </a>
-                    <a href="#change-status" class="status-public <?= $game->status === 'published' ? 'hide"' : '' ?>">
+                    <a href="#change-status" class="status-public <?= $game->status ? 'hide"' : '' ?>">
                         <i class="glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="top" title="Опубликовать"></i>
                     </a>
                 </td>
@@ -114,7 +114,8 @@
 
         $.get('/admin/game/change-status/' + gameId, function(data) {
             if (data.status === 'success') {
-                if (data.current_value === 'published') {
+                console.log(data.current_value);
+                if (!data.current_value) {
                     gameRow.find('.status-public').removeClass('hide');
                     gameRow.find('.status-lurk').addClass('hide');
                 } else {
