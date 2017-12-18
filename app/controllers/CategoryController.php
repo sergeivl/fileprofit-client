@@ -18,9 +18,9 @@ class CategoryController extends Controller
 
         $pageNumber = isset($args['pageNumber']) ? (int)$args['pageNumber'] : 1;
 
-        $pageData['title_seo'] = $page->title_seo ? $page->title_seo : $page->title;
-        $pageData['title'] = $page->title;
-        $pageData['alias'] = $page->alias;
+        //$pageData['title_seo'] = $page->title_seo ? $page->title_seo : $page->title;
+        //$pageData['title'] = $page->title;
+        //$pageData['alias'] = $page->alias;
 
         $limit = 9;
         if ($pageNumber > 1) {
@@ -58,7 +58,7 @@ class CategoryController extends Controller
 
         return $view->render($response, 'layout.php', [
             'subtemplate' => 'mainpage',
-            'pageData' => $pageData,
+            'pageData' => $page,
             'games' => $games,
             'paginator' => $paginator
         ]);

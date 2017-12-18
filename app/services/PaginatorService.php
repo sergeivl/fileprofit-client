@@ -46,6 +46,11 @@ class PaginatorService extends Service
         $this->currentPage = (int)$currentPage;
     }
 
+    public function getCurrentPage()
+    {
+        return $this->currentPage;
+    }
+
     public function setTotalPages($totalPages)
     {
         $this->totalPages = (int)$totalPages;
