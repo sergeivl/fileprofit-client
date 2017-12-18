@@ -18,7 +18,7 @@
     <link rel="icon" href="/img/unikgames.png" />
 
 
-    <title><?= $pageData['title_seo'] ?></title>
+    <title><?= isset($pageData['title_seo']) ? $pageData['title_seo'] : $pageData['title'] ?></title>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -67,7 +67,7 @@ require '_' . $subtemplate . '.php' ?>
 <footer class="container">
     <div class="row fp-footer">
         <div class="col-xs-6">
-            <a href="http://unikgames.ru/">UnikGames.Ru</a> - скачать игры на русском бесплатно через торрент
+            <a href="http://tut-games.ru/">Tut-Games.Ru</a> - скачать игры на русском бесплатно через торрент
         </div>
         <div class="col-xs-6" style="text-align:right;">
 

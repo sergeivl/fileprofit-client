@@ -84,3 +84,12 @@ main {
     background: #000;
     width:240px;
 }
+.game-item-title {
+    height: 40px;
+    padding-top: 10px;
+    text-align: center;
+    background: #222;
+    color: #fff;
+    font-weight: bold;
+
+}
