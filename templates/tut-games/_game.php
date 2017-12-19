@@ -1,5 +1,8 @@
 <?php
 /** @var App\Models\Game $game */
+
+use App\Models\Game;
+
 ?>
 
 <div class="container fp-template">
@@ -53,5 +56,16 @@
     </div>
     <div class="col-md-3">
         <h2>Похожие игры</h2>
+
+        <?php
+        /** @var Game[] $moreGames */
+        foreach ($moreGames as $moreGame) {
+        ?>
+            <p>
+                <a href="<?= $moreGame->getGameLink() ?>"><?= $moreGame->name ?></a>
+            </p>
+        <?php
+        }
+        ?>
     </div>
 </div>

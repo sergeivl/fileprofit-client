@@ -76,4 +76,14 @@ class Game extends Model
         return null;
     }
 
+    public function getMainCategoryId()
+    {
+        foreach ($this->taxonomy as $taxonomy){
+            if ($taxonomy->is_main) {
+                return $taxonomy->category->id;
+            }
+        }
+        return null;
+    }
+
 }

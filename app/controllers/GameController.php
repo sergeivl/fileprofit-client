@@ -14,13 +14,24 @@ class GameController extends Controller
         $pageData['title'] = $game->title;
         $pageData['alias'] = $args['gameAlias'];
 
+        // $moreGames = [];
+        $moreGames = Game::whereHas('taxonomy', function ($query) use ($game) {
+            /** @var Game $game */
+            $query->where('category_id', '=', $game->getMainCategoryId());
+        })
+            ->where('date_release', '<', $game->date_release)
+            ->orderBy('date_release', 'desc')
+            ->take(6)
+            ->get();
+
         /** @var PhpRenderer $view */
         $view = $this->container->view;
 
         return $view->render($response, 'layout.php', [
             'subtemplate' => 'game',
             'pageData' => $pageData,
-            'game' => $game
+            'game' => $game,
+            'moreGames' => $moreGames
         ]);
     }
 
