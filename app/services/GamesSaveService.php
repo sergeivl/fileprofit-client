@@ -35,7 +35,7 @@ class GamesSaveService extends Service
                 $model->title = $game['title'];
                 // $model->seo_title = '';
                 $model->name = $game['name'];
-                $model->meta_d = $game['meta_description'];
+                $model->meta_d = mb_strimwidth ( $game['meta_description'], 0, 255);
                 $model->content = $game['content'];
                 $model->alias = $game['alias'];
                 $model->date_release = date('Y-m-d', $game['date_release']);
