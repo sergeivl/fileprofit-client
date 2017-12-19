@@ -31,4 +31,5 @@ phpunit.phar
 
 /phinx.yml
 /config/db.php
+/config/main.php
 
