@@ -115,7 +115,6 @@ class GamesSaveService extends Service
         $client = new Client();
         // CURLOPT_HTTPHEADER => ['Expect:']
         $games = [];
-        echo PHP_EOL . $this->container->settings['api'] . "/api/get-games?limit=$limit&offset=$offset&contentType=" . $this->container->settings['games_content_type'] . PHP_EOL;
         try {
             $res = $client->request(
                 'GET',
