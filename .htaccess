@@ -1,0 +1,12 @@
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+
+# Если запрос не начинается с public, добавляем его
+RewriteCond %{REQUEST_URI} !^/(public)
+RewriteRule (.*) /public/$1
+
+# Если файл или каталог не существует, идём к /public/index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /public/index.php
