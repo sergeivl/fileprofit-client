@@ -26,6 +26,7 @@
  * @property string $storagerequirements
  * @property string $videocard
  * @property string $fileSize
+ *
  * @property array $taxonomy
  * @package App\Models
  */
@@ -49,8 +50,13 @@ class Game extends Model
         'review',
         'screenshots',
         'torrent',
-        'cover'
-
+        'cover',
+        'operatingSystem',
+        'processorRequirements',
+        'memoryRequirements',
+        'storagerequirements',
+        'videocard',
+        'fileSize'
     ];
 
     public static function withTaxonomy ($categoryId)
