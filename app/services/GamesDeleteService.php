@@ -10,9 +10,10 @@ class GamesDeleteService extends Service
     public function deleteAll()
     {
         $this->container['logger']->addInfo('Очищаем таблицу игр');
-        $this->container['db']::statement("SET foreign_key_checks=0");
+        $db = $this->container['db'];
+        $db::statement("SET foreign_key_checks=0");
         Game::truncate();
-        $this->container['db']::statement("SET foreign_key_checks=1");
+        $db::statement("SET foreign_key_checks=1");
         $this->container['logger']->addInfo('Таблица с играми очищена');
     }
 
