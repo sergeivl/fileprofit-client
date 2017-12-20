@@ -3,7 +3,7 @@
 /**
  * Class User
  * @property string $title
- * @property string $title_seo
+ * @property string $seo_title
  * @property string $alias
  * @property string $name
  * @property string $meta_d
@@ -11,6 +11,7 @@
  * @property string $status
  * @property string $date_release
  * @property string $genre
+ * @property string $rating
  * @property string $more_info
  * @property string $system_requirements
  * @property string $developer
@@ -45,6 +46,8 @@ class Game extends Model
         'more_info',
         'system_requirements',
         'developer',
+        'genre',
+        'rating',
         'trailer',
         'publisher',
         'review',

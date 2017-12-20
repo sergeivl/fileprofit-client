@@ -1,3 +1,6 @@
+<?php
+/** @var App\Models\Game $game */
+?>
 <div class="container fp-template">
     <h1>Редактирование игры</h1>
     <form action="" method="post" name="game" >
@@ -38,38 +41,36 @@
             <input class="form-control" id="date_release" name="date_release" value="<?= $game->date_release ?>">
         </div>
 
-        <?php
-        $req =  json_decode($game->system_requirements, true);
-        ?>
+
 
         <div class="form-group">
             <label for="operatingSystem">Операционная система:</label>
-            <input class="form-control" name="operatingSystem" id="operatingSystem" value="<?= $req['operatingSystem'] ?>">
+            <input class="form-control" name="operatingSystem" id="operatingSystem" value="<?= $game->operatingSystem ?>">
         </div>
 
         <div class="form-group">
             <label for="processorRequirements">Процессор:</label>
-            <input class="form-control" name="processorRequirements" id="processorRequirements" value="<?= $req['processorRequirements'] ?>">
+            <input class="form-control" name="processorRequirements" id="processorRequirements" value="<?= $game->processorRequirements ?>">
         </div>
 
         <div class="form-group">
             <label for="memoryRequirements">Оперативная память:</label>
-            <input class="form-control" name="memoryRequirements" id="memoryRequirements" value="<?= $req['memoryRequirements'] ?>">
+            <input class="form-control" name="memoryRequirements" id="memoryRequirements" value="<?= $game->memoryRequirements ?>">
         </div>
 
         <div class="form-group">
             <label for="videocard">Видеокарта:</label>
-            <input class="form-control" name="videocard" id="videocard" value="<?= $req['videocard'] ?>">
+            <input class="form-control" name="videocard" id="videocard" value="<?= $game->videocard ?>">
         </div>
 
         <div class="form-group">
             <label for="storagerequirements">Место на жёстком диске:</label>
-            <input class="form-control" name="storagerequirements" id="storagerequirements" value="<?= $req['storagerequirements'] ?>">
+            <input class="form-control" name="storagerequirements" id="storagerequirements" value="<?= $game->storagerequirements ?>">
         </div>
 
         <div class="form-group">
             <label for="fileSize">Объём файла:</label>
-            <input class="form-control" name="fileSize" id="fileSize" value="<?= $req['fileSize'] ?>">
+            <input class="form-control" name="fileSize" id="fileSize" value="<?= $game->fileSize ?>">
         </div>
 
 
@@ -98,6 +99,11 @@
         <div class="form-group">
             <label for="genre">Жанр:</label>
             <input class="form-control" id="genre" name="genre" value="<?= $game->genre ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="genre">Рейтинг:</label>
+            <input class="form-control" id="rating" name="rating" value="<?= $game->rating ?>">
         </div>
 
         <div class="form-group">

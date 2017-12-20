@@ -33,7 +33,7 @@ class GamesSaveService extends Service
 
                 // Сохраняем текстовые поля
                 $model->title = $game['title'];
-                // $model->seo_title = '';
+                $model->seo_title = $game['seo_title'];
                 $model->name = $game['name'];
                 $model->meta_d = mb_strimwidth ( $game['meta_description'], 0, 255);
                 $model->content = $game['content'];
@@ -52,6 +52,7 @@ class GamesSaveService extends Service
                 $model->publisher = $game['publisher'];
                 $model->review = $game['review'];
                 $model->genre = $game['genre'];
+                $model->rating = $game['rating'];
 
                 // Сохраняем обложку
                 $model->cover = $this->saveCover($model, $game);
