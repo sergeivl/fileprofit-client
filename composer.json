@@ -15,6 +15,7 @@
             "App\\Console\\": "app/console",
             "App\\Services\\": "app/services",
             "App\\Middleware\\": "app/middleware",
+            "App\\Widgets\\": "app/widgets",
             "App\\Auth\\": "app/auth"
         }
     }

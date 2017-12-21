@@ -2,6 +2,9 @@
 
 class Widget
 {
-
-
+    protected $html;
+    public function __toString()
+    {
+        return $this->html;
+    }
 }
