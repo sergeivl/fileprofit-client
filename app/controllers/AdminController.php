@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use App\Models\Game;
+use App\Models\Menu;
 use App\Models\Page;
 use App\Models\Taxonomy;
 use App\Services\PaginatorService;
@@ -28,7 +29,7 @@ class AdminController extends Controller
         /** @var array $args */
         $game = Game::where('id', $args['id'])->first();
 
-        if($request->isPost()) {
+        if ($request->isPost()) {
             echo 'Сохраняем игру';
             $data = $request->getParsedBody();
             // Сохраняем игру
@@ -60,12 +61,11 @@ class AdminController extends Controller
             $pageData['alias'] = $page->alias;
         } else {
             $pageData['title_seo'] = 'Админка';
-            $pageData['title'] =  'Админка';
+            $pageData['title'] = 'Админка';
             $pageData['alias'] = 'admin';
         }
 
         $pageNumber = isset($args['pageNumber']) ? (int)$args['pageNumber'] : 1;
-
 
 
         $limit = 50;
@@ -162,7 +162,8 @@ class AdminController extends Controller
 
     }
 
-    public function gameChangeStatus($request, $response, $args) {
+    public function gameChangeStatus($request, $response, $args)
+    {
 
         $game = Game::where('id', $args['id'])->first();
 
@@ -212,7 +213,7 @@ class AdminController extends Controller
         $pageId = $args['id'];
         $pageModel = Page::whereId($pageId)->first();
 
-        if($request->isPost()) {
+        if ($request->isPost()) {
             echo 'Сохраняем старницу';
             $data = $request->getParsedBody();;
             $this->savePage($data, $pageModel);
@@ -256,7 +257,7 @@ class AdminController extends Controller
         $categoryId = $args['id'];
         $categoryModel = Category::whereId($categoryId)->first();
 
-        if($request->isPost()) {
+        if ($request->isPost()) {
             echo 'Сохраняем старницу';
             $data = $request->getParsedBody();
             $this->saveCategory($data, $categoryModel);
@@ -308,7 +309,7 @@ class AdminController extends Controller
 
         }
 
-        if($this->container->auth->check()) {
+        if ($this->container->auth->check()) {
             return $response->withRedirect('/admin/');
         }
 
@@ -322,6 +323,38 @@ class AdminController extends Controller
         return $view->render($response, 'admin.php', [
             'subtemplate' => 'login',
             'pageData' => $pageData
+        ]);
+    }
+
+    public function menuEdit(Request $request, Response $response)
+    {
+        /** @var PhpRenderer $view */
+        $view = $this->container->view;
+
+        if ($request->isPost()) {
+            $formData = $request->getParsedBody();
+
+            if (isset($formData['itemName']) && isset($formData['link'])) {
+                $menuItem = new Menu();
+                $menuItem->name = $formData['itemName'];
+                $menuItem->link = $formData['link'];
+                $menuItem->save();
+            }
+        }
+
+        $menuModels = Menu::all();
+
+        $menuItems = Menu::getDataForWidget($menuModels);
+
+        $pageData = [
+            'title' => 'Настройка главного меню',
+            'meta_d' => 'Страница настройки главного меню'
+        ];
+
+        return $view->render($response, 'admin.php', [
+            'subtemplate' => 'menuEdit',
+            'pageData' => $pageData,
+            'menuItems' => $menuItems
         ]);
     }
 

@@ -73,6 +73,9 @@ $app->group('', function () use ($categoryAliases) {
     $this->get('/admin/categories',  'AdminController:categoriesList');
     $this->get('/admin/categories/edit/{id:[0-9]+}',  'AdminController:categoriesEdit');
     $this->post('/admin/categories/edit/{id:[0-9]+}',  'AdminController:categoriesEdit');
+
+    $this->get('/admin/menu',  'AdminController:menuEdit');
+    $this->post('/admin/menu',  'AdminController:menuEdit');
 })->add(new AuthMiddleware($container));
 
 $app->get('/admin/login',  'AdminController:login');

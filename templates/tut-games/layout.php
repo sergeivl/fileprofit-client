@@ -35,37 +35,6 @@ use App\Widgets\MenuWidget;
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top hide">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/"><span style="color:#5cb85c;">Tut</span>-Games.Ru</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li <?= @$pageData['alias'] == 'main' ? 'class="active"' : '' ?> ><a href="/">Все игры</a></li>
-                <li <?= @$pageData['alias'] == 'action' ? 'class="active"' : '' ?> ><a href="/action">Action</a></li>
-                <li <?= @$pageData['alias'] == 'strategy' ? 'class="active"' : '' ?> ><a href="/strategy">Стратегии</a>
-                </li>
-                <li <?= @$pageData['alias'] == 'rpg' ? 'class="active"' : '' ?> ><a href="/rpg">RPG</a></li>
-                <li <?= @$pageData['alias'] == 'arcade' ? 'class="active"' : '' ?> ><a href="/arcade">Аркады</a></li>
-                <li <?= @$pageData['alias'] == 'quest' ? 'class="active"' : '' ?> ><a href="/quest">Приключения</a></li>
-                <li <?= @$pageData['alias'] == 'race' ? 'class="active"' : '' ?> ><a href="/race">Гонки</a></li>
-                <li <?= @$pageData['alias'] == 'fighting' ? 'class="active"' : '' ?> ><a href="/fighting">Файтинги</a>
-                </li>
-                <li <?= @$pageData['alias'] == 'sport' ? 'class="active"' : '' ?> ><a href="/sport">Спорт</a></li>
-                <li <?= @$pageData['alias'] == 'simulator' ? 'class="active"' : '' ?> ><a
-                            href="/simulator">Симуляторы</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
 
 <?php
 if (!isset($pageData['alias'])) {
@@ -80,36 +49,68 @@ $columns = [
     ],
     [
         'name' => 'Action',
-        'link' => '/action',
+        'link' => 'action',
         'is_active' => $pageData['alias'] === 'action',
         'visible' => true
     ],
     [
         'name' => 'Стратегии',
-        'link' => '/strategy',
+        'link' => 'strategy',
         'is_active' => $pageData['alias'] === 'strategy',
         'visible' => true
     ],
     [
         'name' => 'RPG',
-        'link' => '/rpg',
+        'link' => 'rpg',
         'is_active' => $pageData['alias'] === 'rpg',
         'visible' => true
     ],
     [
         'name' => 'Аркады',
-        'link' => '/arcade',
+        'link' => 'arcade',
         'is_active' => $pageData['alias'] === 'arcade',
         'visible' => true
     ],
+
+    [
+        'name' => 'Приключения',
+        'link' => 'quest',
+        'is_active' => $pageData['alias'] === 'quest',
+        'visible' => true
+    ],
+    [
+        'name' => 'Гонки',
+        'link' => 'race',
+        'is_active' => $pageData['alias'] === 'race',
+        'visible' => true
+    ],
+
+    [
+        'name' => 'Файтинги',
+        'link' => 'fighting',
+        'is_active' => $pageData['alias'] === 'fighting',
+        'visible' => true
+    ],
+
+    [
+        'name' => 'Спорт',
+        'link' => 'sport',
+        'is_active' => $pageData['alias'] === 'sport',
+        'visible' => true
+    ],
+    [
+        'name' => 'Симулятор',
+        'link' => 'simulator',
+        'is_active' => $pageData['alias'] === 'sport',
+        'visible' => true
+    ]
 
 ];
 $menu = new MenuWidget($columns);
 echo $menu;
 ?>
 
-<?php
-require '_' . $subtemplate . '.php' ?>
+<?php require '_' . $subtemplate . '.php' ?>
 
 <footer class="container">
     <div class="row fp-footer">

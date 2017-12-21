@@ -17,11 +17,16 @@
     <link href="/themes/tut-games/css/style.css" rel="stylesheet" type="text/css">
     <link href="/themes/admin/css/admin.css" rel="stylesheet" type="text/css">
     <link rel="icon" href="/img/unikgames.png"/>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nestedSortable/2.0.0/jquery.mjs.nestedSortable.min.js"></script>
+
     <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="/ckeditor/adapters/jquery.js"></script>
 
@@ -29,6 +34,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+
+
 
     <title><?= isset($pageData['title_seo']) ? $pageData['title_seo'] : (isset($pageData['title']) ? $pageData['title'] : '' ) ?></title>
 </head>
