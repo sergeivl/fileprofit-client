@@ -37,20 +37,21 @@ class Menu extends Model
 
     public static function getDataForWidget($menuItems = [])
     {
+
         /** @var Menu[] $menuItems */
         // Разделяем элементы с родителями и без
         $parents = [];
-        $childs = [];
+        $children = [];
         foreach ($menuItems as $item) {
-            if ($item->parent === 0) {
-               $parents[$item['id']] = [
+            if (!$item->parent) {
+               $parents[$item->id] = [
                    'id' => $item->id,
                    'itemName' => $item->name,
                    'childs' => [],
                    'parent' => $item->parent
                ];
             } else {
-                $childs[$item->id] = [
+                $children[$item->id] = [
                     'id' => $item->id,
                     'itemName' => $item->name,
                     'childs' => [],
@@ -59,7 +60,9 @@ class Menu extends Model
             }
         }
 
-        foreach ($childs as $child) {
+
+
+        foreach ($children as $child) {
             if (isset($parents[$child['parent']])) {
                 $parents[$child['parent']]['childs'][] = $child;
             }

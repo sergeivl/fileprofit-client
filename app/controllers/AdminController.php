@@ -342,7 +342,7 @@ class AdminController extends Controller
             }
         }
 
-        $menuModels = Menu::all();
+        $menuModels = Menu::orderBy('position', 'asc')->get();
 
         $menuItems = Menu::getDataForWidget($menuModels);
 
@@ -361,8 +361,33 @@ class AdminController extends Controller
     public function saveMenuSorting(Request $request, Response $response)
     {
         if ($request->isPost()) {
-            $formData = $request->getParsedBody();
-            print_r($formData);
+            $sortingData  = $request->getParsedBody()['ids'];
+            $childrenData = $request->getParsedBody()['children'];
+
+            foreach ($sortingData as $key => $value) {
+                $sortingData[$key] = (int)$value;
+            }
+
+            $children = [];
+
+            foreach ($childrenData as $childData) {
+                $children[$childData['child']] = $childData['parent'];
+            }
+
+            $sortingData = array_flip($sortingData);
+
+            $menuModels = Menu::all();
+            foreach ($menuModels as $menuModel) {
+                $menuModel->position = (int)$sortingData[$menuModel->id];
+                if (isset($children[$menuModel->id])) {
+                    $menuModel->parent = $children[$menuModel->id];
+                }
+
+                $menuModel->save();
+            }
+
+
+
         }
     }
 

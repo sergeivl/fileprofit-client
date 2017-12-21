@@ -14,6 +14,7 @@ class SortingMenuWidget extends Widget
 
     private function getItems($columns)
     {
+
         $result = '';
         foreach ($columns as $column) {
             $result .= '<li data-menu-id="' . $column['id'] . '"><div class="ui-sortable-handle">' . $column['itemName'] . '</div>';
@@ -77,41 +78,7 @@ class SortingMenuWidget extends Widget
 
     private function getJs()
     {
-        return "
-            <script>
-                $(document).ready(function () {
-                    $('.sortable').nestedSortable({
-                        handle: 'div',
-                        items: 'li',
-                        toleranceElement: '> div'
-                    });
-
-                 });
-                
-                $('#saveMenu').click(function() {
-                    var sorting = [];
-                  $(document).find('.sortable li').each(function(i, item){
-                        sorting[sorting.length] = $(item).attr('data-menu-id');
-                  });
-                  saveOrder(sorting);
-                });
-                
-                function saveOrder(sorting){
-                    $.ajax({
-                        type: 'POST',
-                        url: '/admin/save-menu-sorting',
-                        data: {'ids' : sorting},
-                        success: function (res) {
-                            if (res === 'ok'){
-
-                            } else {
-
-                            }
-                        }
-                    });
-                }
-                
-            </script>";
+        return '<script type="text/javascript" src="/js/sorting-menu.js"></script>';
     }
 
 }
