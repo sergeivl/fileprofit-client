@@ -16,11 +16,11 @@ class SortingMenuWidget extends Widget
     {
         $result = '';
         foreach ($columns as $column) {
-            $result .= '<li data-menu-id="'. $column['id'] .'"><div class="ui-sortable-handle">' . $column['itemName'] . '</div>';
-            if(count($column['childs'])) {
+            $result .= '<li data-menu-id="' . $column['id'] . '"><div class="ui-sortable-handle">' . $column['itemName'] . '</div>';
+            if (count($column['childs'])) {
                 $result .= '<ol>';
                 foreach ($column['childs'] as $children) {
-                    $result .= '<li data-menu-id="'. $children['id'] .'"><div class="ui-sortable-handle">' . $children['itemName'] . '</div>';
+                    $result .= '<li data-menu-id="' . $children['id'] . '"><div class="ui-sortable-handle">' . $children['itemName'] . '</div>';
                 }
                 $result .= '</ol>';
             }
@@ -44,7 +44,8 @@ class SortingMenuWidget extends Widget
     }
 
 
-    private function getStyles(){
+    private function getStyles()
+    {
         return '
             <style>
                 .sortable {
@@ -88,8 +89,27 @@ class SortingMenuWidget extends Widget
                  });
                 
                 $('#saveMenu').click(function() {
-                  $(document).find('data-menu-id')
+                    var sorting = [];
+                  $(document).find('.sortable li').each(function(i, item){
+                        sorting[sorting.length] = $(item).attr('data-menu-id');
+                  });
+                  saveOrder(sorting);
                 });
+                
+                function saveOrder(sorting){
+                    $.ajax({
+                        type: 'POST',
+                        url: '/admin/save-menu-sorting',
+                        data: {'ids' : sorting},
+                        success: function (res) {
+                            if (res === 'ok'){
+
+                            } else {
+
+                            }
+                        }
+                    });
+                }
                 
             </script>";
     }

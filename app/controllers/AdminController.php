@@ -358,4 +358,12 @@ class AdminController extends Controller
         ]);
     }
 
+    public function saveMenuSorting(Request $request, Response $response)
+    {
+        if ($request->isPost()) {
+            $formData = $request->getParsedBody();
+            print_r($formData);
+        }
+    }
+
 }

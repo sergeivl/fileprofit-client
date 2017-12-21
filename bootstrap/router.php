@@ -76,7 +76,10 @@ $app->group('', function () use ($categoryAliases) {
 
     $this->get('/admin/menu',  'AdminController:menuEdit');
     $this->post('/admin/menu',  'AdminController:menuEdit');
+    $this->post('/admin/save-menu-sorting',  'AdminController:saveMenuSorting');
 })->add(new AuthMiddleware($container));
 
 $app->get('/admin/login',  'AdminController:login');
 $app->post('/admin/login',  'AdminController:login');
+
+
