@@ -47,14 +47,14 @@ class Menu extends Model
                $parents[$item->id] = [
                    'id' => $item->id,
                    'itemName' => $item->name,
-                   'childs' => [],
+                   'children' => [],
                    'parent' => $item->parent
                ];
             } else {
                 $children[$item->id] = [
                     'id' => $item->id,
                     'itemName' => $item->name,
-                    'childs' => [],
+                    'children' => [],
                     'parent' => $item->parent
                 ];
             }
