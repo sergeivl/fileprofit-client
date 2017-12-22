@@ -3,11 +3,11 @@
 /**
  * Class User
  * @package App\Models
- * @property $name
- * @property $link
- * @property $parent
- * @property $position
- * @property $class
+ * @property string $name
+ * @property string $link
+ * @property integer $parent
+ * @property integer $position
+ * @property string $class
  */
 class Menu extends Model
 {

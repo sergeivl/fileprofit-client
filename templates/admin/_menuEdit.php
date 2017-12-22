@@ -22,10 +22,18 @@
                         </small>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Добавить</button>
+                    <button class="btn btn-primary">Добавить</button>
                 </form>
             </div>
         </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Другие действия</div>
+            <div class="panel-body">
+                <button class="btn btn-info" id="add-categories">Добавить категории в меню</button>
+            </div>
+        </div>
+
     </div>
     <div class="col-md-6">
 
@@ -37,8 +45,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
-
-
+<script type="text/javascript" src="/js/admin-menu.js"></script>

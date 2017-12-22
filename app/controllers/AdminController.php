@@ -385,9 +385,24 @@ class AdminController extends Controller
 
                 $menuModel->save();
             }
+        }
+    }
 
+    public function menuAddCategories(Request $request, Response $response)
+    {
+        $categories = Category::all();
 
+        foreach ($categories as $category) {
+            $menuModel = Menu::where('link', '/' . $category->alias)->first();
+            if($menuModel) {
+                continue;
+            }
 
+            $menuModel = new Menu;
+            $menuModel->name = $category->title;
+            $menuModel->link = '/' . $category->alias;
+            $menuModel->position = 99;
+            $menuModel->save();
         }
     }
 
