@@ -1,5 +1,7 @@
 <?php namespace App\Widgets;
 
+use App\Models\Menu;
+
 class MenuWidget extends Widget
 {
     public function __construct($columns = [])
@@ -12,45 +14,25 @@ class MenuWidget extends Widget
 
     private function getItemsOfMenu($columns)
     {
-        print_r($columns);
+        //print_r($columns);
         foreach ($columns as $column) {
-            $class = $column['is_active'] ? 'active' : '';
             if (!$column['children']) {
-                $this->html .= "<li class=\"$class\"><a href=\"$column[link]\">$column[name]</a>";
+                $this->html .= "<li class=\"$column[class]\"><a href=\"$column[link]\">$column[itemName]</a></li>";
             } else {
                 $this->html .= '
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            '. $column['name'] .'
+                            '. $column['itemName'] .' <b class="caret"></b>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 ';
 
-                $this->html .= '<a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Action2</a>
-                                <a class="dropdown-item" href="#">Action3</a>';
+                foreach ($column['children'] as $child) {
+                    $this->html .= "<li class=\"$child[class]\"><a href=\"$child[link]\">$child[itemName]</a></li>";
+                }
 
-                $this->html .= ' </div></li>';
+                $this->html .= '</ul></li>';
             }
-
-
-            /*
-                  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-
-
-             */
-
-
         }
     }
 
@@ -77,6 +59,17 @@ class MenuWidget extends Widget
     {
         return '
                      </ul>
+                     <ul class="nav navbar-nav navbar-right">
+            <form class="navbar-form" role="search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Найти игру" name="q">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></button>
+                </div>
+            </div>
+            </form>  
+    </ul>
+                     
                  </div><!--/.nav-collapse -->
              </div>
         </nav>';

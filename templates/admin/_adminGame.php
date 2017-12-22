@@ -72,13 +72,7 @@
             <label for="fileSize">Объём файла:</label>
             <input class="form-control" name="fileSize" id="fileSize" value="<?= $game->fileSize ?>">
         </div>
-
-
-
-        <div class="form-group">
-            <label for="system_requirements">Системные требования:</label>
-            <textarea name="" id="screenshots" name="screenshots" style="width: 100%;" rows="10"><?= $game->system_requirements ?></textarea>
-        </div>
+        
 
         <div class="form-group">
             <label for="trailer">Трейлер:</label>

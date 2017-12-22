@@ -35,7 +35,12 @@ class Menu extends Model
         //Do-nothing
     }
 
-    public static function getDataForWidget($menuItems = [])
+    /**
+     * @param Menu[] $menuItems
+     * @param string $alias
+     * @return array
+     */
+    public static function getDataForWidget($menuItems = [], $alias = null)
     {
 
         /** @var Menu[] $menuItems */
@@ -48,14 +53,21 @@ class Menu extends Model
                    'id' => $item->id,
                    'itemName' => $item->name,
                    'children' => [],
-                   'parent' => $item->parent
+                   'parent' => $item->parent,
+                   'link' => $item->link,
+                   'is_active' => '',
+                   'visible' => true,
+                   'class' => $item->class . $item->link === $alias ? ' active' : ''
                ];
             } else {
                 $children[$item->id] = [
                     'id' => $item->id,
                     'itemName' => $item->name,
                     'children' => [],
-                    'parent' => $item->parent
+                    'parent' => $item->parent,
+                    'link' => $item->link,
+                    'visible' => true,
+                    'class' => $item->class . $item->link === $alias ? ' active' : ''
                 ];
             }
         }
@@ -64,7 +76,7 @@ class Menu extends Model
 
         foreach ($children as $child) {
             if (isset($parents[$child['parent']])) {
-                $parents[$child['parent']]['childs'][] = $child;
+                $parents[$child['parent']]['children'][] = $child;
             }
         }
 

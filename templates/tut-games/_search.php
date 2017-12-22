@@ -18,19 +18,12 @@
         ?>
         <div class="clearfix"></div>
 
-
-            <?= $paginator->getCurrentPage() < 2 ? "<div>$pageData[text]</div>" : '' ?>
-
-        <?php
-        require '_pagination.php'; ?>
-        <div class="clearfix"></div>
         <?php
     } else {
-        echo '<p>Нет игр</p>';
+        echo '<p>Игры не найдены</p>';
     }
 
     ?>
 
 
 </div>
-

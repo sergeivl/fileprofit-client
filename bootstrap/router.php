@@ -41,6 +41,7 @@ $app->get('/{pageNumber:[0-9]+}',  'MainPageController:show');
 
 // Простая страница
 
+
 // Категория игры
 $categoryAliases = $container->get('settings')['categories'];
 
@@ -51,8 +52,14 @@ $app->get('/{category:' . implode('|', $categoryAliases) . '}/{pageNumber:[0-9]+
 $app->get('/{category:' . implode('|', $categoryAliases) .'}/{gameAlias}',  'GameController:show');
 
 
+
+// Поиск
+$app->get('/search/{query}',  'GameController:search');
+
+// Админка
+$app->get('/admin/login',  'AdminController:login');
+$app->post('/admin/login',  'AdminController:login');
 $app->group('', function () use ($categoryAliases) {
-    // Админка
     $this->get('/admin[/]',  'AdminController:gameList');
     $this->get('/admin/{pageNumber:[0-9]+}',  'AdminController:gameList');
     $this->get('/admin/{category:' . implode('|', $categoryAliases) . '}',  'AdminController:gameList');
@@ -78,8 +85,4 @@ $app->group('', function () use ($categoryAliases) {
     $this->post('/admin/menu',  'AdminController:menuEdit');
     $this->post('/admin/save-menu-sorting',  'AdminController:saveMenuSorting');
 })->add(new AuthMiddleware($container));
-
-$app->get('/admin/login',  'AdminController:login');
-$app->post('/admin/login',  'AdminController:login');
-
 

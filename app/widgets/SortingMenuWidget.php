@@ -18,15 +18,16 @@ class SortingMenuWidget extends Widget
         $result = '';
         foreach ($columns as $column) {
             $result .= '<li data-menu-id="' . $column['id'] . '"><div class="ui-sortable-handle">' . $column['itemName'] . '</div>';
-            if (count($column['childs'])) {
+            if (count($column['children'])) {
                 $result .= '<ol>';
-                foreach ($column['childs'] as $children) {
+                foreach ($column['children'] as $children) {
                     $result .= '<li data-menu-id="' . $children['id'] . '"><div class="ui-sortable-handle">' . $children['itemName'] . '</div>';
                 }
                 $result .= '</ol>';
             }
             $result .= '</li>';
         }
+
         return $result;
     }
 

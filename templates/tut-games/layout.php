@@ -37,78 +37,20 @@ use App\Widgets\MenuWidget;
 
 
 <?php
-if (!isset($pageData['alias'])) {
-    $pageData['alias'] = null;
+if (!isset($pageData['alias']) || $pageData['alias'] === 'main') {
+    $pageData['alias'] = '/';
+} else {
+    $pageData['alias']  = '/' . $pageData['alias'];
 }
-$columns = [
-    [
-        'name' => 'Все игры',
-        'link' => '/',
-        'is_active' => $pageData['alias'] === 'main',
-        'visible' => true
-    ],
-    [
-        'name' => 'Action',
-        'link' => 'action',
-        'is_active' => $pageData['alias'] === 'action',
-        'visible' => true
-    ],
-    [
-        'name' => 'Стратегии',
-        'link' => 'strategy',
-        'is_active' => $pageData['alias'] === 'strategy',
-        'visible' => true
-    ],
-    [
-        'name' => 'RPG',
-        'link' => 'rpg',
-        'is_active' => $pageData['alias'] === 'rpg',
-        'visible' => true
-    ],
-    [
-        'name' => 'Аркады',
-        'link' => 'arcade',
-        'is_active' => $pageData['alias'] === 'arcade',
-        'visible' => true
-    ],
 
-    [
-        'name' => 'Приключения',
-        'link' => 'quest',
-        'is_active' => $pageData['alias'] === 'quest',
-        'visible' => true
-    ],
-    [
-        'name' => 'Гонки',
-        'link' => 'race',
-        'is_active' => $pageData['alias'] === 'race',
-        'visible' => true
-    ],
 
-    [
-        'name' => 'Файтинги',
-        'link' => 'fighting',
-        'is_active' => $pageData['alias'] === 'fighting',
-        'visible' => true
-    ],
+$menuModels = (new \App\Models\Menu)->orderBy('position', 'asc')->get();
+$menuItems = \App\Models\Menu::getDataForWidget($menuModels, $pageData['alias'] );
 
-    [
-        'name' => 'Спорт',
-        'link' => 'sport',
-        'is_active' => $pageData['alias'] === 'sport',
-        'visible' => true
-    ],
-    [
-        'name' => 'Симулятор',
-        'link' => 'simulator',
-        'is_active' => $pageData['alias'] === 'sport',
-        'visible' => true
-    ]
-
-];
-$menu = new MenuWidget($columns);
+$menu = new MenuWidget($menuItems);
 echo $menu;
 ?>
+
 
 <?php require '_' . $subtemplate . '.php' ?>
 

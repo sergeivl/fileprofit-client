@@ -61,6 +61,7 @@
                 <li><a href="/admin/categories">Категории</a></li>
                 <li><a href="/admin/pages">Страницы</a></li>
                 <li><a href="/admin/menu">Меню</a></li>
+                <li><a style="color:#5cb85c;" href="/">Перейти на сайт</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
