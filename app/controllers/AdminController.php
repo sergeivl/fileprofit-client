@@ -406,4 +406,25 @@ class AdminController extends Controller
         }
     }
 
+    public function editItemMenu(Request $request, Response $response)
+    {
+        $editMenuData = $request->getParsedBody();
+        /** @var Menu $menuModel */
+        $menuModel = Menu::find($editMenuData['itemMenuElementId']);
+        $menuModel->name = $editMenuData['itemMenuName'];
+        $menuModel->link = $editMenuData['item-menu-link'];
+        $menuModel->save();
+
+        return $response->withRedirect('/admin/menu');
+    }
+
+    public function deleteItemMenu(Request $request, Response $response)
+    {
+        $editMenuData = $request->getParsedBody();
+        $menuModel = Menu::find($editMenuData['itemMenuElementIdForDelete']);
+        $menuModel->delete();
+
+        return $response->withRedirect('/admin/menu');
+    }
+
 }

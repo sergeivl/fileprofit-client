@@ -17,11 +17,27 @@ class SortingMenuWidget extends Widget
 
         $result = '';
         foreach ($columns as $column) {
-            $result .= '<li data-menu-id="' . $column['id'] . '"><div class="ui-sortable-handle">' . $column['itemName'] . '</div>';
+            $result .= '<li data-menu-id="' . $column['id'] . '" data-menu-link="' . $column['link'] . '" data-menu-item-name="' . $column['itemName'] . '">
+                            <div class="ui-sortable-handle pull-left"  style="width:80%;">' . $column['itemName'] . '</div>
+                            <div class="pull-right">
+                            <a href="#edit" class="menu-item-edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                            &nbsp;&nbsp;
+                            <a href="#delete" class="menu-item-delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        </div>
+                        <div class="clearfix"></div>
+                            ';
             if (count($column['children'])) {
                 $result .= '<ol>';
                 foreach ($column['children'] as $children) {
-                    $result .= '<li data-menu-id="' . $children['id'] . '"><div class="ui-sortable-handle">' . $children['itemName'] . '</div>';
+                    $result .= '<li data-menu-id="' . $children['id'] . '" data-menu-link="' . $children['link'] . '" data-menu-item-name="' . $children['itemName'] . '">
+                        <div class="ui-sortable-handle pull-left" style="width:80%;">' . $children['itemName'] . '</div>
+                        <div class="pull-right">
+                            <a href="#edit"  class="menu-item-edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                            &nbsp;&nbsp;
+                            <a href="#delete" class="menu-item-delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        </div>
+                        <div class="clearfix"></div>
+                        </li>';
                 }
                 $result .= '</ol>';
             }
