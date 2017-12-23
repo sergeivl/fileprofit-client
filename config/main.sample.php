@@ -5,6 +5,7 @@ return [
         'templatesPath' => '../templates',
         'theme' => 'standart',
         'db' => require 'db.php',
+        'auth' => require 'auth.php',
         'categories' => json_decode(file_get_contents('categories.json', true), true),
         'pagination' => require 'pagination.php',
         'api' => 'https://fileprofit.net',
