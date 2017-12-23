@@ -422,9 +422,26 @@ class AdminController extends Controller
     {
         $editMenuData = $request->getParsedBody();
         $menuModel = Menu::find($editMenuData['itemMenuElementIdForDelete']);
+
+        // Ищем потомков
+        $menuChildren = Menu::where('parent', $menuModel->id)->get();
+        if (count($menuChildren)) {
+            $menuChildren = '';
+        }
+
         $menuModel->delete();
 
         return $response->withRedirect('/admin/menu');
+    }
+
+    public function addPage()
+    {
+
+    }
+
+    public function editPage()
+    {
+
     }
 
 }

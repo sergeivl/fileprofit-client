@@ -1,7 +1,15 @@
 <?php
 /** @var array $pages */
 ?>
-<h1>Список страниц</h1>
+<div class="row">
+    <div class="col-md-4">
+        <h1>Список страниц</h1>
+    </div>
+    <div class="col-md-6">
+        <a href="#" class="btn btn-primary" style="margin-top: 10px;">Добавить страницу</a>
+    </div>
+</div>
+
 <table class="table">
     <tr>
         <th>Игра</th>

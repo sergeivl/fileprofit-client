@@ -32,4 +32,5 @@ phpunit.phar
 /phinx.yml
 /config/db.php
 /config/main.php
+/config/auth.php
 

@@ -62,9 +62,9 @@ class MenuWidget extends Widget
                      <ul class="nav navbar-nav navbar-right">
             <form class="navbar-form" role="search">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Найти игру" name="q">
+                <input type="text" class="form-control" placeholder="Найти игру" id="q">
                 <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></button>
+                    <button class="btn btn-default" type="button" onclick="window.location=\'/search/\' + $(this).parent().prev().val()"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></button>
                 </div>
             </div>
             </form>  
