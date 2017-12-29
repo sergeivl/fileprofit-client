@@ -32,6 +32,10 @@ use App\Models\Game;
                         <td>Издатель</td>
                         <td><?= $game->publisher ?></td>
                     </tr>
+                    <tr>
+                        <td>Рейтинг</td>
+                        <td><?= $game->rating ?></td>
+                    </tr>
                 </table>
                 <a href="<?= $game->torrent ?>">
                     <button class="btn btn-success btn-lg">
@@ -44,15 +48,36 @@ use App\Models\Game;
         <br>
 
         <div><?= $game->content ?></div>
-
+        <div>
+            <h2>Системные требования</h2>
+            <table class="table">
+                <tr>
+                    <td>Процессор</td>
+                    <td><?= $game->processorRequirements ?></td>
+                </tr>
+                <tr>
+                    <td>Память</td>
+                    <td><?= $game->memoryRequirements ?></td>
+                </tr>
+                <tr>
+                    <td>Видеокарта</td>
+                    <td><?= $game->videocard ?></td>
+                </tr>
+                <tr>
+                    <td>HDD / SSD</td>
+                    <td><?= $game->storagerequirements ?></td>
+                </tr>
+            </table>
+        </div>
         <div>
             <?php
             $screenshots = json_decode($game->screenshots, true);
             foreach ($screenshots as $screenshot) {
-                echo '<img src="'. $screenshot .'" class="img-responsive" alt="" ><br>';
+                echo '<div class="pull-left" style="max-width:400px; height: 225px; border: 1px solid #ffffff; overflow: hidden;"><img src="' . $screenshot . '" class="img-responsive" alt="" ></div>';
             }
             ?>
         </div>
+        <div class="clearfix"></div>
     </div>
     <div class="col-md-3">
         <h2>Похожие игры</h2>
@@ -60,11 +85,11 @@ use App\Models\Game;
         <?php
         /** @var Game[] $moreGames */
         foreach ($moreGames as $moreGame) {
-        ?>
+            ?>
             <p>
                 <a href="<?= $moreGame->getGameLink() ?>"><?= $moreGame->name ?></a>
             </p>
-        <?php
+            <?php
         }
         ?>
     </div>

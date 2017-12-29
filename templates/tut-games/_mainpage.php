@@ -19,10 +19,12 @@
         <div class="clearfix"></div>
 
 
-            <?= $paginator->getCurrentPage() < 2 ? "<div>$pageData[text]</div>" : '' ?>
+
 
         <?php
         require '_pagination.php'; ?>
+
+        <?= $paginator->getCurrentPage() < 2 ? "<div>$pageData[text]</div>" : '' ?>
         <div class="clearfix"></div>
         <?php
     } else {
