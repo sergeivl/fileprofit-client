@@ -31,6 +31,9 @@ use App\Widgets\MenuWidget;
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
 
+    <link  href="/fancybox/jquery.fancybox.css" rel="stylesheet">
+    <script src="/fancybox/jquery.fancybox.js"></script>
+
 </head>
 
 <body>

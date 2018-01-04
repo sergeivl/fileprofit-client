@@ -70,10 +70,18 @@ use App\Models\Game;
             </table>
         </div>
         <div>
+            <a data-fancybox="gallery" href="big_1.jpg">
+                <img src="small_1.jpg">
+            </a>
+
+
             <?php
             $screenshots = json_decode($game->screenshots, true);
             foreach ($screenshots as $screenshot) {
-                echo '<div class="pull-left" style="max-width:400px; height: 225px; border: 1px solid #ffffff; overflow: hidden;"><img src="' . $screenshot . '" class="img-responsive" alt="" ></div>';
+                echo '<div class="pull-left" style="max-width:400px; height: 225px; border: 1px solid #ffffff; overflow: hidden;">
+                     <a data-fancybox="gallery" href="'. $screenshot .'"><img src="' . $screenshot . '" class="img-responsive" alt="" ></a>
+                    
+                    </div>';
             }
             ?>
         </div>
