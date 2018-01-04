@@ -19,12 +19,12 @@ class MainPageController extends Controller
         $limit = 9;
         if ($pageNumber > 1) {
             $offset = ($pageNumber-1)*$limit;
-            $games = Game::orderBy('date_release', 'desc')->skip($offset)->take(9)->get();
+            $games = Game::where('status', 1)->orderBy('date_release', 'desc')->skip($offset)->take(9)->get();
         } else {
-            $games = Game::orderBy('date_release', 'desc')->take(9)->get();
+            $games = Game::where('status', 1)->orderBy('date_release', 'desc')->take(9)->get();
         }
 
-        $totalGames = Game::all()->count();
+        $totalGames = Game::where('status', 1)->count();
 
         /** @var PhpRenderer $view */
         $view = $this->container->view;

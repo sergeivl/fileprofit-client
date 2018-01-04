@@ -29,6 +29,7 @@ class CategoryController extends Controller
             $games = Game::whereHas('taxonomy', function ($query) use ($page) {
                 $query->where('category_id', '=', $page->id);
             })
+                ->where('status', 1)
                 ->orderBy('date_release', 'desc')
                 ->skip($offset)
                 ->take($this->container->get('settings')['pagination']['itemsPerPage'])
@@ -38,6 +39,7 @@ class CategoryController extends Controller
             $games = Game::whereHas('taxonomy', function ($query) use ($page) {
                 $query->where('category_id', '=', $page->id);
             })
+                ->where('status', 1)
                 ->orderBy('date_release', 'desc')
                 ->take($this->container->get('settings')['pagination']['itemsPerPage'])
                 ->get();
@@ -45,7 +47,7 @@ class CategoryController extends Controller
         }
 
 
-        $totalGames = Game::withTaxonomy($page->id)->count();
+        $totalGames = Game::withTaxonomy($page->id)->where('status', 1)->count();
         /** @var PhpRenderer $view */
         $view = $this->container->view;
         $paginator = new PaginatorService($this->container);
