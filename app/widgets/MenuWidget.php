@@ -4,12 +4,13 @@ use App\Models\Menu;
 
 class MenuWidget extends Widget
 {
-    public function __construct($columns = [])
+    private $textLogo;
+    public function __construct($columns = [], $textLogo = null)
     {
+        $this->textLogo = $textLogo;
         $this->html .= $this->getBeginMenu();
         $this->html .= $this->getItemsOfMenu($columns);
         $this->html .= $this->getEndMenu();
-
     }
 
     private function getItemsOfMenu($columns)
@@ -49,7 +50,7 @@ class MenuWidget extends Widget
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/"><span style="color:#5cb85c;">Tut</span>-Games.Ru</a>
+                        <a class="navbar-brand" href="/"> '. $this->textLogo .'</a>
                     </div>
                     <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">';

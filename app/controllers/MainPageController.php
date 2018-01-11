@@ -40,7 +40,8 @@ class MainPageController extends Controller
             'subtemplate' => 'mainpage',
             'pageData' => $page,
             'games' => $games,
-            'paginator' => $paginator
+            'paginator' => $paginator,
+            'textLogo' => $this->container->settings['textLogo']
         ]);
     }
 }

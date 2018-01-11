@@ -1,5 +1,6 @@
 <?php
 /** @var array $pageData */
+/** @var string $textLogo */
 
 use App\Widgets\MenuWidget;
 
@@ -50,8 +51,9 @@ if (!isset($pageData['alias']) || $pageData['alias'] === 'main') {
 $menuModels = (new \App\Models\Menu)->orderBy('position', 'asc')->get();
 $menuItems = \App\Models\Menu::getDataForWidget($menuModels, $pageData['alias'] );
 
-$menu = new MenuWidget($menuItems);
+$menu = new MenuWidget($menuItems, $textLogo);
 echo $menu;
+
 ?>
 
 

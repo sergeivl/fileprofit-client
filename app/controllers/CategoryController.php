@@ -43,7 +43,6 @@ class CategoryController extends Controller
                 ->orderBy('date_release', 'desc')
                 ->take($this->container->get('settings')['pagination']['itemsPerPage'])
                 ->get();
-
         }
 
 
@@ -51,7 +50,6 @@ class CategoryController extends Controller
         /** @var PhpRenderer $view */
         $view = $this->container->view;
         $paginator = new PaginatorService($this->container);
-
         $paginator->setCategoryAlias($category);
         $paginator->setCurrentPage($pageNumber);
         $paginator->setItemsPerPage($this->container->get('settings')['pagination']['itemsPerPage']);
@@ -62,7 +60,8 @@ class CategoryController extends Controller
             'subtemplate' => 'mainpage',
             'pageData' => $page,
             'games' => $games,
-            'paginator' => $paginator
+            'paginator' => $paginator,
+            'textLogo' => $this->container->settings['textLogo']
         ]);
     }
 

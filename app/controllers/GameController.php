@@ -33,7 +33,8 @@ class GameController extends Controller
             'subtemplate' => 'game',
             'pageData' => $pageData,
             'game' => $game,
-            'moreGames' => $moreGames
+            'moreGames' => $moreGames,
+            'textLogo' => $this->container->settings['textLogo']
         ]);
     }
 
@@ -53,7 +54,8 @@ class GameController extends Controller
         return $view->render($response, 'layout.php', [
             'subtemplate' => 'search',
             'pageData' => $pageData,
-            'games' => $games
+            'games' => $games,
+            'textLogo' => $this->container->settings['textLogo']
         ]);
     }
 

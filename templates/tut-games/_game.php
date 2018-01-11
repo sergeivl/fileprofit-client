@@ -37,11 +37,7 @@ use App\Models\Game;
                         <td><?= $game->rating ?></td>
                     </tr>
                 </table>
-                <a href="<?= $game->torrent ?>">
-                    <button class="btn btn-success btn-lg">
-                        <i class="glyphicon glyphicon-download-alt" style="margin-right: 5px;"></i> Скачать игру
-                    </button>
-                </a>
+                <?php require_once '_downloadButton.php'; ?>
             </div>
         </div>
 

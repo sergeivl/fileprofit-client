@@ -29,6 +29,9 @@ phpunit.phar
 /public/torrents/*
 !/public/torrents/.gitkeep
 
+/public/download/*
+!/public/download/.gitkeep
+
 /phinx.yml
 /config/db.php
 /config/main.php
