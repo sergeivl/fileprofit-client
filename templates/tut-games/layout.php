@@ -80,6 +80,11 @@ echo $menu;
         </div>
     </div>
 </footer>
-
+<script>
+    $('#search-form').submit(function(event) {
+        window.location='/search/' + $('#q').val()
+        event.preventDefault();
+    });
+    //</script>
 </body>
 </html>
