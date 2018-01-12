@@ -9,6 +9,7 @@ return [
         'categories' => json_decode(file_get_contents('categories.json', true), true),
         'pagination' => require 'pagination.php',
         'api' => 'https://fileprofit.net',
-        'games_content_type' => 'TutGames'
+        'games_content_type' => 'TutGames',
+        'token' => 'Token of site from Fileprofit.Net'
     ],
 ];

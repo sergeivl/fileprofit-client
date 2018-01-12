@@ -123,6 +123,7 @@ class GamesSaveService extends Service
                 . "/api/get-games?limit=$limit&offset=$offset"
                 . ($this->container->settings['games_content_type'] ? '&contentType='
                 . $this->container->settings['games_content_type'] : '')
+                . '&token=' . $this->container->settings['token']
             );
 
             if ($res->getStatusCode() === 200) {

@@ -13,7 +13,7 @@ class CategoriesSaveService extends Service
     public function saveAllCategories()
     {
         $client = new Client();
-        $res = $client->request('GET', $this->container->settings['api'] . '/api/get-categories');
+        $res = $client->request('GET', $this->container->settings['api'] . '/api/get-categories?token=' . '&token=' . $this->container->settings['token']);
 
         $categories = [];
 
