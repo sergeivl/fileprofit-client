@@ -58,7 +58,7 @@ $app->get('/search/{query}',  'GameController:search');
 
 // Админка
 $app->get('/admin/login',  'AdminController:login');
-$app->post('/admin',  'AdminController:index')->add(new AuthMiddleware($container));;
+$app->post('/admin/login',  'AdminController:login');
 $app->group('', function () use ($categoryAliases) {
     $this->get('/admin[/]',  'AdminController:gameList');
     $this->get('/admin/{pageNumber:[0-9]+}',  'AdminController:gameList');
