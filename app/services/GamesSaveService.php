@@ -4,6 +4,7 @@ use App\Models\Game;
 use App\Models\Taxonomy;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Intervention\Image\ImageManagerStatic as Image;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 class GamesSaveService extends Service
@@ -152,9 +153,17 @@ class GamesSaveService extends Service
                 $game['cover'],
                 $coverPath
             );
+            $this->uniquelyImg($coverPath);
         }
 
         return '/' . $coverPath;
+    }
+
+    private function uniquelyImg($imgPath)
+    {
+        $img = Image::make($imgPath);
+        $img->text($this->container->settings['watermark']);
+        $img->save($imgPath);
     }
 
     private function saveScreenshots(Game $model, $game)
@@ -176,6 +185,7 @@ class GamesSaveService extends Service
                     $screenshot,
                     $path
                 );
+                $this->uniquelyImg($screenshot);
             }
 
             $result[] = '/' . $path;
