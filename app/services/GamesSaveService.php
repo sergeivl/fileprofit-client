@@ -130,6 +130,10 @@ class GamesSaveService extends Service
             if ($res->getStatusCode() === 200) {
                 //$games = \GuzzleHttp\json_decode($res->getBody(), true);
                 $games = json_decode($res->getBody(), true);
+            } else {
+                $error = json_decode($res->getBody(), true);
+                print_r($error);
+                exit();
             }
 
         } catch (RequestException $e) {
@@ -162,8 +166,12 @@ class GamesSaveService extends Service
     private function uniquelyImg($imgPath)
     {
         $img = Image::make($imgPath);
-        $img->text($this->container->settings['watermark']);
+        $img->text($this->container->settings['watermark'], 4, 15, function ($font) {
+            $font->file('../public/fonts/Astakhov-Access-Degree-Sk.ttf');
+        });
+        $img->colorize(rand(0, 10), rand(0, 10), rand(0, 10));
         $img->save($imgPath);
+        echo $imgPath;
     }
 
     private function saveScreenshots(Game $model, $game)
@@ -185,7 +193,7 @@ class GamesSaveService extends Service
                     $screenshot,
                     $path
                 );
-                $this->uniquelyImg($screenshot);
+                $this->uniquelyImg($path);
             }
 
             $result[] = '/' . $path;
