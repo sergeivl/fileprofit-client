@@ -171,7 +171,6 @@ class GamesSaveService extends Service
         });
         $img->colorize(rand(0, 10), rand(0, 10), rand(0, 10));
         $img->save($imgPath);
-        echo $imgPath;
     }
 
     private function saveScreenshots(Game $model, $game)
