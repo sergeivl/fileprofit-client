@@ -115,7 +115,6 @@ class GamesSaveService extends Service
     private function getGames($limit, $offset)
     {
         $client = new Client();
-        // CURLOPT_HTTPHEADER => ['Expect:']
         $games = [];
         try {
             $res = $client->request(
@@ -133,8 +132,14 @@ class GamesSaveService extends Service
             } else {
                 $error = json_decode($res->getBody(), true);
                 print_r($error);
+                exit($games);
+            }
+
+            if (isset($games['code']) && $games['code'] === 400) {
+                echo $games['message'] . PHP_EOL;
                 exit();
             }
+
 
         } catch (RequestException $e) {
             $this->container['logger']->addError('cURL error 18');
