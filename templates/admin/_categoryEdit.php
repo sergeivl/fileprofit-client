@@ -21,8 +21,8 @@
     </div>
 
     <div class="form-group">
-        <label for="text">Контент:</label>
-        <textarea class="form-control" name="text" id="text" style="width:100%;" rows="5"><?= $pageData['text'] ?></textarea>
+        <label for="content">Контент:</label>
+        <textarea class="form-control" name="text" id="content" style="width:100%;" rows="5"><?= $pageData['text'] ?></textarea>
     </div>
 
     <div class="form-group">
@@ -39,3 +39,9 @@
 </form>
 
 <br><br>
+
+<script>
+    $(document).ready(function(){
+        $('#content').ckeditor();
+    });
+</script>
