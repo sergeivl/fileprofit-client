@@ -38,6 +38,7 @@ class GameController extends Controller
         ]);
     }
 
+
     public function search(Request $request, Response $response, $args)
     {
         if (!isset($args['query'])) {

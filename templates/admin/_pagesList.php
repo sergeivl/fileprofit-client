@@ -6,7 +6,7 @@
         <h1>Список страниц</h1>
     </div>
     <div class="col-md-6">
-        <a href="#" class="btn btn-primary" style="margin-top: 10px;">Добавить страницу</a>
+        <a href="/admin/pages/create" class="btn btn-primary" style="margin-top: 10px;">Добавить страницу</a>
     </div>
 </div>
 

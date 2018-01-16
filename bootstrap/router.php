@@ -51,7 +51,8 @@ $app->get('/{category:' . implode('|', $categoryAliases) . '}/{pageNumber:[0-9]+
 // Игра
 $app->get('/{category:' . implode('|', $categoryAliases) .'}/{gameAlias}',  'GameController:show');
 
-
+// Года
+$app->get('/year/{year:[0-9]+}',  'YearController:show');
 
 // Поиск
 $app->get('/search/{query}',  'GameController:search');
@@ -76,6 +77,9 @@ $app->group('', function () use ($categoryAliases) {
     $this->get('/admin/pages',  'AdminController:pagesList');
     $this->get('/admin/pages/edit/{id:[0-9]+}',  'AdminController:pagesEdit');
     $this->post('/admin/pages/edit/{id:[0-9]+}',  'AdminController:pagesEdit');
+
+    $this->get('/admin/pages/create',  'AdminController:pagesCreate');
+    $this->post('/admin/pages/create',  'AdminController:pagesCreate');
 
     $this->get('/admin/categories',  'AdminController:categoriesList');
     $this->get('/admin/categories/edit/{id:[0-9]+}',  'AdminController:categoriesEdit');

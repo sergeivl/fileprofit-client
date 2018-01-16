@@ -2,7 +2,12 @@
 /** @var App\Models\Page $pageData */
 ?>
 
-<h1>Редактирование страницы «<?= $pageData['title'] ?>»</h1>
+<?php if ($pageData['id']): ?>
+    <h1>Редактирование страницы «<?= $pageData['title'] ?>»</h1>
+<?php else: ?>
+    <h1>Создание страницы</h1>
+<?php endif; ?>
+
 
 <form action="" method="post" name="page" >
     <div class="form-group">

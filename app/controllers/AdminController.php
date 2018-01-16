@@ -225,10 +225,26 @@ class AdminController extends Controller
         ]);
     }
 
-    public function pagesCreate()
+    public function pagesCreate($request, $response, $args)
     {
+        /** @var PhpRenderer $view */
+        $view = $this->container->view;
 
+        if ($request->isPost()) {
+            echo 'Сохраняем старницу';
+            $data = $request->getParsedBody();;
+            $this->savePage($data);
+            return $response->withRedirect('/admin/pages');
+        }
+
+        $pageModel = new Page();
+
+        return $view->render($response, 'admin.php', [
+            'subtemplate' => 'pageEdit',
+            'pageData' => $pageModel
+        ]);
     }
+
 
     public function categoriesList($request, $response, $args)
     {

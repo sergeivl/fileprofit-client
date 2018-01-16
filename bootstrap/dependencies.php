@@ -40,6 +40,10 @@ $container['AdminController'] = function (\Slim\Container $c) {
     return new \App\Controllers\AdminController($c);
 };
 
+$container['YearController'] = function (\Slim\Container $c) {
+    return new \App\Controllers\YearController($c);
+};
+
 $container['auth'] = function (\Slim\Container $c) {
     return new \App\Auth\Auth;
 };
