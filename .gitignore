@@ -38,7 +38,7 @@ phpunit.phar
 !/public/download/.gitkeep
 
 /templates/
-!/templates/standart/*
+!/templates/standart/
 
 
 !/templates/admin/*
