@@ -45,7 +45,7 @@ $container['YearController'] = function (\Slim\Container $c) {
 };
 
 $container['auth'] = function (\Slim\Container $c) {
-    return new \App\Auth\Auth;
+    return new \App\Auth\Auth($c);
 };
 
 // Консольные контроллеры
