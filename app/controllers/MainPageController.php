@@ -28,7 +28,9 @@ class MainPageController extends Controller
                 ->get();
         }
 
-        $totalGames = Game::where('status', 1)->count();
+        $totalGames = Game::where('status', 1)
+            ->where('date_public', '<', date('Y-m-d H:i:s'))
+            ->count();
 
         /** @var PhpRenderer $view */
         $view = $this->container->view;

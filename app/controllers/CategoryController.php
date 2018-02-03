@@ -30,6 +30,7 @@ class CategoryController extends Controller
                 $query->where('category_id', '=', $page->id);
             })
                 ->where('status', 1)
+                ->where('date_public', '<', date('Y-m-d H:i:s'))
                 ->orderBy('date_release', 'desc')
                 ->skip($offset)
                 ->take($this->container->get('settings')['pagination']['itemsPerPage'])
@@ -40,13 +41,17 @@ class CategoryController extends Controller
                 $query->where('category_id', '=', $page->id);
             })
                 ->where('status', 1)
+                ->where('date_public', '<', date('Y-m-d H:i:s'))
                 ->orderBy('date_release', 'desc')
                 ->take($this->container->get('settings')['pagination']['itemsPerPage'])
                 ->get();
         }
 
 
-        $totalGames = Game::withTaxonomy($page->id)->where('status', 1)->count();
+        $totalGames = Game::withTaxonomy($page->id)
+            ->where('status', 1)
+            ->where('date_public', '<', date('Y-m-d H:i:s'))
+            ->count();
         /** @var PhpRenderer $view */
         $view = $this->container->view;
         $paginator = new PaginatorService($this->container);
