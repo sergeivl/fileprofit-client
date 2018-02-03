@@ -23,17 +23,45 @@ class AdminController extends Controller
         };
     }
 
+
     public function gameEdit(Request $request, $response, $args)
     {
-
         /** @var array $args */
+        /** @var Game $game */
         $game = Game::where('id', $args['id'])->first();
 
         if ($request->isPost()) {
             echo 'Сохраняем игру';
             $data = $request->getParsedBody();
             // Сохраняем игру
-            die();
+            // TODO Срочно сделать сохранение игры
+
+            $game->title = $data['title'];
+            $game->seo_title = $data['seo_title'];
+            $game->name =  $data['name'];
+            $game->meta_d = $data['meta_d'];
+            $game->content = $data['content'];
+            $game->alias = $data['alias'];
+            $game->date_release = $data['date_release'];
+            $game->operatingSystem =  $data['operatingSystem'];
+            $game->processorRequirements = $data['processorRequirements'];
+            $game->memoryRequirements = $data['memoryRequirements'];
+            $game->videocard = $data['videocard'];
+            $game->storagerequirements = $data['storagerequirements'];
+            $game->fileSize = $data['fileSize'];
+            $game->trailer = $data['trailer'];
+            $game->developer = $data['developer'];
+            $game->publisher = $data['publisher'];
+            $game->genre = $data['genre'];
+            $game->rating = $data['rating'];
+            $game->review = $data['review'];
+            $game->torrent = $data['torrent'];
+            $game->cover = $data['cover'];
+            //$game->screenshots = $data['screenshots'];
+            $game->status = $data['status'];
+            $game->date_public = $data['date_public'];
+
+            $game->save();
         }
 
         $pageData['title_seo'] = $game->title_seo ? $game->title_seo : $game->title;

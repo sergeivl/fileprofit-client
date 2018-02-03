@@ -21,7 +21,11 @@ class MainPageController extends Controller
             $offset = ($pageNumber-1)*$limit;
             $games = Game::where('status', 1)->orderBy('date_release', 'desc')->skip($offset)->take(9)->get();
         } else {
-            $games = Game::where('status', 1)->orderBy('date_release', 'desc')->take(9)->get();
+            $games = Game::where('status', 1)
+                ->where('date_public', '<', date('Y-m-d H:i:s'))
+                ->orderBy('date_release', 'desc')
+                ->take(9)
+                ->get();
         }
 
         $totalGames = Game::where('status', 1)->count();

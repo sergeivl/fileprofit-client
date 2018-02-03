@@ -122,6 +122,11 @@
             <label for="status">Статус:</label>
             <input class="form-control" id="status" name="status" value="<?= $game->status ?>">
         </div>
+
+        <div class="form-group">
+            <label for="date_public">Дата публикации:</label>
+            <input class="form-control" id="date_public" name="date_public" value="<?= $game->date_public ?>">
+        </div>
         <button class="btn btn-success">Сохранить</button>
     </form>
 </div>

@@ -27,6 +27,7 @@
  * @property string $storagerequirements
  * @property string $videocard
  * @property string $fileSize
+ * @property string $date_public
  *
  * @property array $taxonomy
  * @package App\Models
@@ -59,7 +60,8 @@ class Game extends Model
         'memoryRequirements',
         'storagerequirements',
         'videocard',
-        'fileSize'
+        'fileSize',
+        'date_public'
     ];
 
     public static function withTaxonomy ($categoryId)
