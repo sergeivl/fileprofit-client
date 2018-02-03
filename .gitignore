@@ -16,6 +16,11 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
+/phinx.yml
+/config/db.php
+/config/main.php
+/config/auth.php
+
 # vagrant runtime
 /logs
 /tmp
@@ -32,8 +37,9 @@ phpunit.phar
 /public/download/*
 !/public/download/.gitkeep
 
-/phinx.yml
-/config/db.php
-/config/main.php
-/config/auth.php
+/templates/*
+!/templates/standart/*
+!/templates/admin/*
+
+
 

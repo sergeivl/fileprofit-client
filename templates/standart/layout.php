@@ -62,7 +62,7 @@ echo $menu;
 <footer class="container">
     <div class="row fp-footer">
         <div class="col-xs-6">
-            <a href="http://tut-games.ru/">Tut-Games.Ru</a> - скачать игры на русском бесплатно через торрент
+            <a href="/"><?= $textLogo ?></a>
         </div>
         <div class="col-xs-6" style="text-align:right;">
             <!--LiveInternet counter-->
