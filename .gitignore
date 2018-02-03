@@ -41,6 +41,4 @@ phpunit.phar
 !/templates/standart/
 /templates/standart/_downloadButton.php
 
-!/templates/admin/*
-database/seeds/
-public/themes/admin/img/
+!/templates/admin/
