@@ -41,7 +41,10 @@ phpunit.phar
 !/templates/standart/*
 /templates/standart/_downloadButton.php
 
+
 !/templates/admin/*
 
 
 
+
+!/templates/standart/_downloadButton.sample.php
