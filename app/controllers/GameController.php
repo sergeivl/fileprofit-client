@@ -22,6 +22,7 @@ class GameController extends Controller
             $query->where('category_id', '=', $game->getMainCategoryId());
         })
             ->where('date_release', '<', $game->date_release)
+            ->where('date_public', '<', date('Y-m-d H:i:s'))
             ->orderBy('date_release', 'desc')
             ->take(6)
             ->get();
