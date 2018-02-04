@@ -6,7 +6,8 @@
         "robmorgan/phinx": "^0.8.1",
         "illuminate/database": "^5.4",
         "guzzlehttp/guzzle": "^6.3",
-        "intervention/image": "^2.4"
+        "intervention/image": "^2.4",
+        "samdark/sitemap": "^2.2"
     },
     "autoload": {
         "psr-4": {

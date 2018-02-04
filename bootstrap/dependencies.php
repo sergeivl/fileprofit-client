@@ -58,6 +58,10 @@ if (php_sapi_name() === 'cli') {
         return new \App\Console\CategoriesDataController($c);
     };
 
+    $container['SitemapController'] = function (\Slim\Container $c) {
+        return new \App\Console\SitemapController($c);
+    };
+
     $container['logger'] = function($c) {
         $logger = new \Monolog\Logger('cli_logger');
         $handler = new \Monolog\Handler\StreamHandler('php://stdout');

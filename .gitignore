@@ -49,3 +49,4 @@ phpunit.phar
 
 
 /public/robots.txt
+/public/*.xml

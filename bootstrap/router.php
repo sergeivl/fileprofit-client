@@ -27,6 +27,9 @@ if (php_sapi_name() === 'cli') {
         case 'CategoriesDataController/saveToJsonConfig':
             $container['CategoriesDataController']->saveToJsonConfig();
             break;
+        case 'SitemapController/generate':
+            $container['SitemapController']->generate();
+            break;
         default:
             echo 'Экшен не найден';
     }

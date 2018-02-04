@@ -12,6 +12,7 @@ return [
         'token' => 'your_token',
         'games_content_type' => 'Standart',
         'textLogo' => 'Your text logo',
-        'watermark' => 'Your watermark'
+        'watermark' => 'Your watermark',
+        'baseUrl' => 'http://..'
     ],
 ];
