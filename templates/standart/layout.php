@@ -18,8 +18,8 @@ use App\Widgets\MenuWidget;
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="/themes/tut-games/css/style.css" rel="stylesheet" type="text/css">
-    <link rel="icon" href="/img/unikgames.png"/>
+    <link href="/themes/standart/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="/themes/standart/img/game-favicon.png" />
 
 
     <title><?= isset($pageData['title_seo']) ? $pageData['title_seo'] : $pageData['title'] ?></title>
