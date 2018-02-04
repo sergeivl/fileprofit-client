@@ -28,6 +28,7 @@ class YearController extends Controller
            $offset = ($pageNumber-1)*$limit;
 
             $games = Game::where('status', 1)
+                ->where('date_public', '<', date('Y-m-d H:i:s'))
                 ->orderBy('date_release', 'desc')
                 ->skip($offset)
                 ->take($this->container->get('settings')['pagination']['itemsPerPage'])
@@ -37,7 +38,8 @@ class YearController extends Controller
             $games = Game::where([
                 ['status', '=', 1],
                 ['date_release', '>=', $args['year'] . '-01-01'],
-                ['date_release', '<=', $args['year'] . '-12-31']
+                ['date_release', '<=', $args['year'] . '-12-31'],
+                ['date_public', '<', date('Y-m-d H:i:s')]
             ])
                 ->orderBy('date_release', 'desc')
                 ->take($this->container->get('settings')['pagination']['itemsPerPage'])

@@ -19,7 +19,7 @@ class GameController extends Controller
                 ->write('Ошибка 404. Страница не существует или типа того');
         }
 
-        $pageData['title_seo'] = $game->title_seo ? $game->title_seo : $game->title;
+        $pageData['title_seo'] = $game->title_seo;
         $pageData['title'] = $game->title;
         $pageData['meta_d'] = $game->meta_d;
         $pageData['alias'] = $args['gameAlias'];
