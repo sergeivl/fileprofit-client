@@ -21,3 +21,7 @@
 Удаление всех игр
 
     php index.php GamesDataController/deleteGames
+    
+Генерация карты сайтов
+
+    php index.php SitemapController/generate
