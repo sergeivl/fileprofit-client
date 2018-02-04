@@ -43,8 +43,8 @@ phpunit.phar
 
 !/templates/admin/
 
-/public/templates/themes/*
-!/public/templates/themes/standart/
-!public/templates/themes/admin/
+/public/themes/*
+!/public/themes/standart/
+!public/themes/admin/
 
 
