@@ -47,6 +47,7 @@ class GamesSaveService extends Service
                 $model->storagerequirements = $game['storagerequirements'];
                 $model->videocard = $game['videocard'];
                 $model->fileSize = $game['fileSize'];
+                $model->status = 0;
 
                 $model->trailer = $game['trailer'];
                 $model->developer = $game['developer'];
