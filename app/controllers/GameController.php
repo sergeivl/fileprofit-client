@@ -13,7 +13,7 @@ class GameController extends Controller
         /** @var Game $game */
         $game = Game::where('alias', $args['gameAlias'])->first();
 
-        if (!$game || !$game->status) {
+        if (!$game || !$game->status || $game->date_public > date('Y-m-d H:i:s')) {
             return $this->container['response']->withStatus(404)
                 ->withHeader('Content-Type', 'text/html')
                 ->write('Ошибка 404. Страница не существует или типа того');
