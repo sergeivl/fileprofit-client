@@ -191,7 +191,7 @@ class PaginatorService extends Service
 
         echo '</ul>';
         $content = ob_get_clean();
-        return $content;
+        return str_replace('//', '/', $content);
     }
 
 
