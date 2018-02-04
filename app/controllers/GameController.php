@@ -10,7 +10,14 @@ class GameController extends Controller
     public function show($request, $response, $args)
     {
         /** @var array $args */
+        /** @var Game $game */
         $game = Game::where('alias', $args['gameAlias'])->first();
+
+        if (!$game || !$game->status) {
+            return $this->container['response']->withStatus(404)
+                ->withHeader('Content-Type', 'text/html')
+                ->write('Ошибка 404. Страница не существует или типа того');
+        }
 
         $pageData['title_seo'] = $game->title_seo ? $game->title_seo : $game->title;
         $pageData['title'] = $game->title;
@@ -22,6 +29,7 @@ class GameController extends Controller
             /** @var Game $game */
             $query->where('category_id', '=', $game->getMainCategoryId());
         })
+            ->where('status', 1)
             ->where('date_release', '<', $game->date_release)
             ->where('date_public', '<', date('Y-m-d H:i:s'))
             ->orderBy('date_release', 'desc')
