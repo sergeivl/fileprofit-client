@@ -14,6 +14,7 @@ class GameController extends Controller
 
         $pageData['title_seo'] = $game->title_seo ? $game->title_seo : $game->title;
         $pageData['title'] = $game->title;
+        $pageData['meta_d'] = $game->meta_d;
         $pageData['alias'] = $args['gameAlias'];
 
         // $moreGames = [];
