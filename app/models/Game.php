@@ -28,6 +28,8 @@
  * @property string $videocard
  * @property string $fileSize
  * @property string $date_public
+ * @property int $is_noindex
+ * @property int $is_nofollow
  *
  * @property array $taxonomy
  * @package App\Models
@@ -61,7 +63,9 @@ class Game extends Model
         'storagerequirements',
         'videocard',
         'fileSize',
-        'date_public'
+        'date_public',
+        'is_noindex',
+        'is_nofollow'
     ];
 
     public static function withTaxonomy ($categoryId)

@@ -18,7 +18,8 @@
             "App\\Services\\": "app/services",
             "App\\Middleware\\": "app/middleware",
             "App\\Widgets\\": "app/widgets",
-            "App\\Auth\\": "app/auth"
+            "App\\Auth\\": "app/auth",
+            "App\\Helpers\\": "app/helpers"
         }
     }
 }

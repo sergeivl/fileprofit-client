@@ -23,6 +23,8 @@ class GameController extends Controller
         $pageData['title'] = $game->title;
         $pageData['meta_d'] = $game->meta_d;
         $pageData['alias'] = $args['gameAlias'];
+        $pageData['is_noindex'] = $game->is_noindex;
+        $pageData['is_nofollow'] = $game->is_nofollow;
 
         // $moreGames = [];
         $moreGames = Game::whereHas('taxonomy', function ($query) use ($game) {

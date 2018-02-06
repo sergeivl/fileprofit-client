@@ -24,6 +24,12 @@ use App\Widgets\MenuWidget;
 
     <title><?= isset($pageData['title_seo']) ? $pageData['title_seo'] : $pageData['title'] ?></title>
 
+    <?php if (isset($pageData['is_noindex']) && isset($pageData['is_nofollow'])): ?>
+        <?= \App\Helpers\PageDataHelper::metaRobots($pageData['is_noindex'], $pageData['is_nofollow']);  ?>
+
+
+    <?php endif; ?>
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>

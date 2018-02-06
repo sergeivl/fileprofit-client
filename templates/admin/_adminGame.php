@@ -124,6 +124,16 @@
         </div>
 
         <div class="form-group">
+            <label for="status">Robots Noindex:</label>
+            <input class="form-control" id="is_noindex" name="is_noindex" value="<?= $game->is_noindex ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="is_nofollow">Robots Nofollow:</label>
+            <input class="form-control" id="is_nofollow" name="is_nofollow" value="<?= $game->is_nofollow ?>">
+        </div>
+
+        <div class="form-group">
             <label for="date_public">Дата публикации:</label>
             <input class="form-control" id="date_public" name="date_public" value="<?= $game->date_public ?>">
         </div>

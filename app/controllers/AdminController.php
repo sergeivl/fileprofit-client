@@ -60,6 +60,8 @@ class AdminController extends Controller
             //$game->screenshots = $data['screenshots'];
             $game->status = $data['status'];
             $game->date_public = $data['date_public'];
+            $game->is_noindex = $data['is_noindex'];
+            $game->is_nofollow = $data['is_nofollow'];
 
             $game->save();
         }
