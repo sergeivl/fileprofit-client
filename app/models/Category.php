@@ -31,4 +31,14 @@ class Category extends Model
         $this->status = $data['status'];
     }
 
+    public static function getCategoryList()
+    {
+        $result = [];
+        $categories = Category::all();
+        foreach ($categories as $category) {
+            $result[$category->id] = $category->title;
+        }
+        return $result;
+    }
+
 }

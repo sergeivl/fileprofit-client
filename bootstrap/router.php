@@ -30,6 +30,9 @@ if (php_sapi_name() === 'cli') {
         case 'SitemapController/generate':
             $container['SitemapController']->generate();
             break;
+        case 'YandexTurboController':
+            $container['YandexTurboController']->generate();
+            break;
         default:
             echo 'Экшен не найден';
     }

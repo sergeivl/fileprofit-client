@@ -62,6 +62,10 @@ if (php_sapi_name() === 'cli') {
         return new \App\Console\SitemapController($c);
     };
 
+    $container['YandexTurboController'] = function (\Slim\Container $c) {
+        return new \App\Console\YandexTurboController($c);
+    };
+
     $container['logger'] = function($c) {
         $logger = new \Monolog\Logger('cli_logger');
         $handler = new \Monolog\Handler\StreamHandler('php://stdout');
