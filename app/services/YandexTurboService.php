@@ -54,7 +54,7 @@ class YandexTurboService extends Service
     {
         $item = new Item();
         $item
-            ->title($itemData['title'])
+            ->title(htmlspecialchars($itemData['title']))
             ->link($itemData['link'])
             //->author($itemData['author'])
             ->category($itemData['category'])

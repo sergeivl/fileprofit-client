@@ -3,6 +3,7 @@
 use App\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Game;
+use App\Services\GeneratorYandexTurboService;
 use App\Services\YandexTurboService;
 
 
@@ -10,6 +11,10 @@ class YandexTurboController extends Controller
 {
     public function generate()
     {
+        $service = new GeneratorYandexTurboService($this->container);
+        $service->generate();
+
+        die();
         $itemsData = [];
 
         $channelData = [
