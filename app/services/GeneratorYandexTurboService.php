@@ -52,16 +52,16 @@ class GeneratorYandexTurboService extends Service
     private function makeGameItem(Game $game, $categories)
     {
         $relatedItems = $this->getRelatedGames($game);
-        $cover = '<figure><img scr="' . $this->baseUrl . $game->cover . '" alt="' . $game->title . '"></figure>';
+        $cover = '<figure><img src="' . $this->baseUrl . $game->cover . '" alt="' . $game->title . '"></figure>';
 
         $buttonLink = $this->baseUrl  . $game->getGameLink();
         $imgLink =  $this->baseUrl . '/themes/standart/img/download-button-green.png';
 
-        $downloadButton = '<a href="'. $buttonLink. '"><img src="' . $imgLink . '"></a>';
+        //$downloadButton = '<a href="'. $buttonLink. '"><img src="' . $imgLink . '"></a>';
         //var_dump($downloadButton);
         //$downloadButton = '<a href="'.$this->baseUrl . '/' . $game->title.'" style="width: 100%; border-radius: 6px; padding: 10px 16px; font-size: 18px; line-height: 1.3333333; margin-top: 20px; display: inline-block;"'
 
-        $turboContent = $cover . $downloadButton . $game->content;
+        $turboContent = $cover . $game->content;
 
         return [
             'title' => $game->title,
