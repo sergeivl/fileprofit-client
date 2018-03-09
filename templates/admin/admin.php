@@ -14,7 +14,6 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="/themes/tut-games/css/style.css" rel="stylesheet" type="text/css">
     <link href="/themes/admin/css/admin.css" rel="stylesheet" type="text/css">
     <link rel="icon" href="/img/unikgames.png"/>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
@@ -67,7 +66,7 @@
     </div>
 </nav>
 
-<div class="container" style="background: white">
+<div class="container" style="background: white" >
     <div class="row">
         <div class="col-md-10">
             <?php require '_' . $subtemplate . '.php' ?>
