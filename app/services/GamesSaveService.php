@@ -157,7 +157,7 @@ class GamesSaveService extends Service
     {
         $parts = explode('.', $game['cover']);
         $ext = $parts[count($parts) - 1];
-        $coverPath = 'img/covers/' . $model->alias . '.' . $ext;
+        $coverPath = WEB_ROOT . 'img/covers/' . $model->alias . '.' . $ext;
         if (!file_exists($coverPath)) {
             $this->saveFile(
                 $game['cover'],
@@ -173,7 +173,7 @@ class GamesSaveService extends Service
     {
         $img = Image::make($imgPath);
         $img->text($this->container->settings['watermark'], 4, 15, function ($font) {
-            $font->file('../public/fonts/Astakhov-Access-Degree-Sk.ttf');
+            $font->file(WEB_ROOT . 'fonts/Astakhov-Access-Degree-Sk.ttf');
         });
         $img->colorize(rand(0, 10), rand(0, 10), rand(0, 10));
         $img->save($imgPath);
@@ -191,7 +191,7 @@ class GamesSaveService extends Service
             $parts = explode('.', $screenshot);
             $ext = $parts[count($parts) - 1];
 
-            $path = 'img/screenshots/' . $model->alias . '_' . strval($key + 1) . '.' . $ext;
+            $path = WEB_ROOT . 'img/screenshots/' . $model->alias . '_' . strval($key + 1) . '.' . $ext;
 
             if (!file_exists($path)) {
                 $this->saveFile(
@@ -211,7 +211,7 @@ class GamesSaveService extends Service
 
         $parts = explode('.', $game['torrent']);
         $ext = $parts[count($parts) - 1];
-        $torrentPath = 'torrents/' . $model->alias . '.' . $ext;
+        $torrentPath = WEB_ROOT . 'torrents/' . $model->alias . '.' . $ext;
 
         if (empty($game['torrent'])) {
             $this->container['logger']->addError('Торрент файл отсутствует');

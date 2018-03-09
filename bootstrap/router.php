@@ -3,6 +3,9 @@
 use App\Middleware\AuthMiddleware;
 
 if (php_sapi_name() === 'cli') {
+    if (!isset($argv[1])) {
+        throw new Exception('Отсутсвую аргументы', 400);
+    }
     switch ($argv[1]) {
         case 'GamesDataController/getCategories':
             $container['GamesDataController']->getCategories();
