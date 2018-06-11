@@ -16,8 +16,7 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="/themes/admin/css/admin.css" rel="stylesheet" type="text/css">
     <link rel="icon" href="/img/unikgames.png"/>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
-
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"/>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -35,8 +34,7 @@
             crossorigin="anonymous"></script>
 
 
-
-    <title><?= isset($pageData['title_seo']) ? $pageData['title_seo'] : (isset($pageData['title']) ? $pageData['title'] : '' ) ?></title>
+    <title><?= isset($pageData['title_seo']) ? $pageData['title_seo'] : (isset($pageData['title']) ? $pageData['title'] : '') ?></title>
 </head>
 
 <body>
@@ -66,7 +64,7 @@
     </div>
 </nav>
 
-<div class="container" style="background: white" >
+<div class="container" style="background: white">
     <div class="row">
         <div class="col-md-10">
             <?php require '_' . $subtemplate . '.php' ?>

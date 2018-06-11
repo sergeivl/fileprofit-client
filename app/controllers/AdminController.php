@@ -165,6 +165,15 @@ class AdminController extends Controller
     public function gameDelete($request, $response, $args)
     {
         $game = Game::where('id', $args['id'])->first();
+
+        if (!$game) {
+            $result = [
+                'action' => 'delete',
+                'status' => 'error'
+            ];
+            return $response->withJson($result, 404);
+        }
+
         $gameTaxonomy = Taxonomy::where('game_id', $game->id);
 
         try {

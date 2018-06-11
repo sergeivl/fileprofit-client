@@ -104,7 +104,9 @@
         confirmModal.find('.modal-body').html('<p>Вы действительно хотите удалить ' + gameName + '?</p>');
         confirmModal.modal();
         $('.btn-delete').click(function(){
-            $.get('/admin/game/delete/' + gameId);
+            $.get('/admin/game/delete/' + gameId, function(data) {
+                location.reload();
+            });
         });
     });
 

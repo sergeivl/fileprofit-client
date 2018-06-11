@@ -47,7 +47,7 @@ class GamesSaveService extends Service
                 $model->storagerequirements = $game['storagerequirements'];
                 $model->videocard = $game['videocard'];
                 $model->fileSize = $game['fileSize'];
-                $model->status = 0;
+                $model->status = 1;
 
                 $model->trailer = $game['trailer'];
                 $model->developer = $game['developer'];
@@ -166,14 +166,20 @@ class GamesSaveService extends Service
             $this->uniquelyImg($coverPath);
         }
 
-        return '/' . $coverPath;
+        $coverUrl = '/img/covers/' . $model->alias . '.' . $ext;
+
+        return $coverUrl;
     }
 
-    private function uniquelyImg($imgPath)
+    private function uniquelyImg($imgPath, $fontSize = null)
     {
         $img = Image::make($imgPath);
-        $img->text($this->container->settings['watermark'], 4, 15, function ($font) {
+        $y = 15 + $fontSize;
+        $img->text($this->container->settings['watermark'], 4, $y, function ($font) use ($fontSize) {
             $font->file(WEB_ROOT . 'fonts/Astakhov-Access-Degree-Sk.ttf');
+            if ($fontSize) {
+                $font->size($fontSize);
+            }
         });
         $img->colorize(rand(0, 10), rand(0, 10), rand(0, 10));
         $img->save($imgPath);
@@ -198,10 +204,10 @@ class GamesSaveService extends Service
                     $screenshot,
                     $path
                 );
-                $this->uniquelyImg($path);
+                $this->uniquelyImg($path, 80);
             }
 
-            $result[] = '/' . $path;
+            $result[] = '/img/screenshots/' . $model->alias . '_' . strval($key + 1) . '.' . $ext;
         }
         return \GuzzleHttp\json_encode($result);
     }
