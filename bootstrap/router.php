@@ -48,8 +48,6 @@ if (php_sapi_name() === 'cli') {
 $app->get('/',  'MainPageController:show');
 $app->get('/{pageNumber:[0-9]+}',  'MainPageController:show');
 
-// Простая страница
-
 
 // Категория игры
 $categoryAliases = $container->get('settings')['categories'];
@@ -65,6 +63,8 @@ $app->get('/year/{year:[0-9]+}',  'YearController:show');
 
 // Поиск
 $app->get('/search/{query}',  'GameController:search');
+
+
 
 // Админка
 $app->get('/admin/login',  'AdminController:login');
@@ -102,3 +102,5 @@ $app->group('', function () use ($categoryAliases) {
     $this->post('/admin/delete-item-menu',  'AdminController:deleteItemMenu');
 })->add(new AuthMiddleware($container));
 
+// Простая страница
+$app->get('/{pageAlias}',  'PageController:show');
