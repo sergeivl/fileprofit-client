@@ -37,10 +37,10 @@ use App\Models\Game;
                         <td><?= $game->rating ?></td>
                     </tr>
                 </table>
-                <?php require_once '_downloadButton.php'; ?>
             </div>
         </div>
 
+        <?php require_once '_downloadButton.php'; ?>
         <br>
 
         <div><?= $game->content ?></div>
